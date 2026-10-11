@@ -1,5 +1,5 @@
--- Chạy tệp này MỘT LẦN trên project Nhà Tiger đã chạy schema.sql bản cũ.
--- Nâng trạng thái đơn sang new / processing / done và bật theo dõi trạng thái riêng cho khách.
+-- Chạy trên project Nhà Tiger đã có bảng orders.
+-- Có thể chạy lại an toàn để bổ sung trạng thái cancelled và giữ theo dõi trạng thái riêng cho khách.
 
 create extension if not exists pgcrypto;
 
@@ -14,9 +14,10 @@ update public.orders set status = case status
   when 'Mới' then 'new'
   when 'Đang làm' then 'processing'
   when 'Đã xong' then 'done'
+  when 'Đã hủy' then 'cancelled'
   else status
 end;
-alter table public.orders add constraint orders_status_check check (status in ('new', 'processing', 'done'));
+alter table public.orders add constraint orders_status_check check (status in ('new', 'processing', 'done', 'cancelled'));
 
 alter table public.orders enable row level security;
 grant usage on schema public to anon, authenticated;

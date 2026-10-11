@@ -15,7 +15,7 @@ create table if not exists public.orders (
   ),
   total integer not null check (total > 0),
   note text not null default '' check (char_length(note) <= 500),
-  status text not null default 'new' check (status in ('new', 'processing', 'done')),
+  status text not null default 'new' check (status in ('new', 'processing', 'done', 'cancelled')),
   created_at timestamptz not null default now()
 );
 
@@ -30,9 +30,10 @@ update public.orders set status = case status
   when 'Mới' then 'new'
   when 'Đang làm' then 'processing'
   when 'Đã xong' then 'done'
+  when 'Đã hủy' then 'cancelled'
   else status
 end;
-alter table public.orders add constraint orders_status_check check (status in ('new', 'processing', 'done'));
+alter table public.orders add constraint orders_status_check check (status in ('new', 'processing', 'done', 'cancelled'));
 
 create index if not exists orders_created_at_idx on public.orders (created_at desc);
 

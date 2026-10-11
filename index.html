@@ -15,38 +15,33 @@
 body{margin:0;color:var(--ink);font:15px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background-color:var(--paper);background-image:radial-gradient(#e9c89645 .8px,transparent .8px);background-size:13px 13px}
 button,input,select{font:inherit}button{cursor:pointer}
 .shell{max-width:1120px;margin:auto;padding:14px 22px 145px}
-.topbar{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border:2px dashed #e9bd86;border-radius:24px;background:#fffdf7eF;box-shadow:0 7px 22px #805b3412;position:sticky;top:10px;z-index:8;backdrop-filter:blur(12px)}
-.brand{display:flex;align-items:center;gap:10px;font:900 16px/1 var(--hand);letter-spacing:.02em}
+.topbar{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px 16px;border:2px dashed #e9bd86;border-radius:24px;background:#fffdf7ef;box-shadow:0 7px 22px #805b3412;position:sticky;top:10px;z-index:8;backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand-name{display:block;color:var(--orange-dark);font:950 19px/1 var(--hand);letter-spacing:.025em}
 .brand-mark{width:43px;height:43px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(145deg,#ffdc70,#ff956e);font-size:25px;box-shadow:0 4px 12px #cb743533}
-.brand small{display:block;color:#8c7764;font:700 9px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.16em;margin-top:5px}
+.brand small{display:block;color:#8c7764;font:650 11px/1.3 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:0;margin-top:5px}
+.topbar-right{display:flex;align-items:center;justify-content:flex-end;gap:9px;min-width:0}
+.header-context{display:flex;align-items:center;gap:7px}
 .nav{display:flex;align-items:center;gap:5px;padding:4px;background:#f4eee5;border-radius:999px}
 .nav button{border:0;border-radius:999px;background:transparent;color:#6b5c4e;padding:9px 15px;font-size:13px;font-weight:750;transition:.2s}
 .nav button.active{background:var(--orange);color:white;box-shadow:0 4px 12px #ee633e40}
 .nav button:hover{transform:translateY(-1px)}
-.hero{display:grid;grid-template-columns:1.03fr .97fr;align-items:center;gap:24px;margin:24px 0 20px;padding:24px;border:2px dashed #e4ba8b;border-radius:30px;background:linear-gradient(120deg,#fff0d9,#ffdfcf 54%,#fff0d4);box-shadow:var(--shadow);overflow:hidden}
-.hero-copy{padding:4px 8px}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--orange-dark);font-size:11px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}
 .eyebrow i{width:8px;height:8px;border-radius:50%;background:#ef7545;box-shadow:0 0 0 5px #ef75451c}
-h1{font:900 clamp(30px,4vw,46px)/1.06 var(--hand);letter-spacing:-.04em;margin:13px 0 11px;color:#3a2419}
-.hero-copy p{max-width:470px;color:#6d5949;margin:0}
-.hero-meta{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-top:18px}
-.table-badge,.demo-badge{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:800}
+.table-badge{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:800}
 .table-badge{background:#fffdf5;border:1px solid #ebc99f;color:#694b32}
-.demo-badge{background:#fff9edb8;border:1px solid #f0d7b5;color:#876947}
 .hero-call{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:9px 13px;background:#fff7eb;color:#ab4937;text-decoration:none;font-size:12px;font-weight:850;border:1px solid #f1c5a7}
 .hero-call:hover{background:white}
 .customer-orders-link{display:inline-flex;align-items:center;gap:6px;border:1px solid #efbea0;border-radius:999px;padding:8px 12px;background:#fff;color:#a94734;font-size:12px;font-weight:850;box-shadow:0 4px 12px #73532a0b}
 .customer-orders-link:hover{background:#fff4e9;transform:translateY(-1px)}
-.hero-visual{position:relative;min-width:0}
-.hero-visual img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;object-position:center;background:#fffaf1;border:5px solid #fffdf7;border-radius:23px;box-shadow:0 12px 28px #79452128}
-.hero-sticker{position:absolute;right:12px;top:12px;background:#fffdf4;color:#9c492d;padding:7px 11px;border:1px dashed #e7aa75;border-radius:15px;font:800 12px var(--hand);transform:rotate(4deg)}
-.controls{display:flex;align-items:center;gap:12px;margin:18px 0 16px}
+.controls{display:flex;align-items:center;gap:12px;margin:20px 0 16px}
 .search-wrap{position:relative;flex:1;max-width:560px}
 .search-icon{position:absolute;left:15px;top:50%;transform:translateY(-50%);font-size:17px;color:#9d8973}
 .search{width:100%;height:48px;padding:0 16px 0 43px;background:#fff;border:1px solid #eadcc8;border-radius:17px;outline:0;box-shadow:0 5px 16px #73532a12;color:var(--ink)}
 .search:focus{border-color:#ec9169;box-shadow:0 0 0 4px #ee633e17}
-.table-tag{padding:12px 15px;border:1px dashed #d9b987;background:#fffdf7;border-radius:16px;color:#74604c;white-space:nowrap;font-size:13px}
-.table-tag strong{color:#3b2a20}
+.manager-title{margin:22px 0 8px;padding:4px 2px}
+.manager-title h1{font:900 clamp(24px,3vw,32px)/1.1 var(--hand);letter-spacing:-.025em;margin:8px 0;color:#3a2419}
+.manager-title p{margin:0;color:#6d5949;font-size:13px}
 .tabs{display:flex;gap:10px;margin:14px 0 17px}
 .tab{display:flex;align-items:center;gap:9px;border:1px solid #eadcc8;border-radius:999px;background:#fff;color:#514238;padding:12px 20px;font-weight:850;box-shadow:0 4px 12px #73532a0b;transition:.18s}
 .tab span{font-size:18px}
@@ -97,6 +92,10 @@ h1{font:900 clamp(30px,4vw,46px)/1.06 var(--hand);letter-spacing:-.04em;margin:1
 .section-head h2{font:900 22px var(--hand);margin:0}
 .section-head p{font-size:12px;color:#847668;margin:3px 0 0}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.admin-date-filter{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:18px 0 10px;padding:13px 16px;border:1px dashed #e7c99f;border-radius:17px;background:#fffefa}
+.admin-date-filter label{display:flex;align-items:center;gap:10px;color:#665343;font-size:13px;font-weight:850}
+.admin-date-filter input{min-height:40px;padding:7px 10px;border:1px solid #ead7bd;border-radius:11px;background:#fffaf3;color:#38271d;outline-color:#ec9169;font-weight:750}
+.admin-date-hint{font-size:11px;color:#8a7a6b;text-align:right}
 .admin-login{max-width:460px;margin:22px auto;padding:22px;border:2px dashed #e7c99f;border-radius:24px;background:#fffefa;box-shadow:var(--shadow)}
 .admin-login h2{font:900 22px var(--hand);margin:0 0 8px}.admin-login p{font-size:13px;color:var(--muted)}
 .admin-login input{width:100%;height:46px;margin:7px 0;padding:0 13px;border:1px solid #ead7bd;border-radius:12px;background:#fffaf3;outline-color:#ec9169}
@@ -113,25 +112,34 @@ h1{font:900 clamp(30px,4vw,46px)/1.06 var(--hand);letter-spacing:-.04em;margin:1
 .alert-button{border:0;border-radius:14px;padding:11px 15px;background:#e95348;color:#fff;font-weight:900;box-shadow:0 5px 13px #b84b3838;white-space:nowrap}
 .alert-button.enabled{background:#397d50;box-shadow:0 5px 13px #397d5030}.alert-button:hover{filter:brightness(1.06);transform:translateY(-1px)}
 .order-list{display:grid;gap:11px}
+.order-group-tabs{display:flex;gap:8px;overflow-x:auto;margin:10px 0 14px;padding-bottom:2px}
+.order-group-tab{flex:1;min-width:max-content;padding:10px 13px;border:1px solid #eadcc8;border-radius:999px;background:#fff;color:#675747;font-size:12px;font-weight:850;white-space:nowrap}
+.order-group-tab.active{border-color:var(--orange);background:var(--orange);color:#fff;box-shadow:0 5px 13px #ee633e2b}
+.order-group-tab span{display:inline-grid;place-items:center;min-width:21px;height:21px;margin-left:5px;padding:0 5px;border-radius:999px;background:#f4eee5;color:#665343;font-size:10px}
+.order-group-tab.active span{background:#ffffff35;color:#fff}
 .order-card{padding:15px;border:1px dashed #e7c99f;border-radius:17px;background:#fffaf1}
 .order-top{display:flex;justify-content:space-between;gap:10px}
 .order-id{font-weight:900}
 .order-time{font-size:11px;color:#897969;margin-top:3px}
 .badge{padding:5px 9px;border-radius:999px;background:#fff0d2;color:#936616;font-size:11px;font-weight:800;white-space:nowrap}
-.badge.prep{background:#e9f1ff;color:#38669e}.badge.done{background:#e7f5e9;color:#397549}
+.badge.prep{background:#e9f1ff;color:#38669e}.badge.done{background:#e7f5e9;color:#397549}.badge.cancelled{background:#fde8e5;color:#9b3e35}
 .order-items{margin:12px 0;color:#67594d;font-size:12px;line-height:1.7}
 .order-bottom{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #eee1ce;padding-top:10px}
 .order-bottom strong{color:var(--orange-dark)}
 .mini{border:1px solid #edc9a1;background:#fff7eb;border-radius:10px;padding:7px 10px;color:#98543d;font-size:11px;font-weight:800}
+.mini.cancel{border-color:#f0c8c3;background:#fff4f2;color:#a7463e}
+.order-actions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:7px}
 .customer-order{padding:15px;margin-top:12px;border:1px dashed #e7c99f;border-radius:18px;background:#fffaf1}
 .customer-order.processing{animation:order-pulse 1.8s ease-in-out infinite;border-color:#70b77b;background:#f1fff1}
 .customer-order.done{border-color:#a5d2a5;background:#f4fff2}
+.customer-order.cancelled{border-color:#e8b0a9;background:#fff4f2}
 .customer-order-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
 .customer-order-title{font-weight:900}.customer-order-time{font-size:11px;color:#897969;margin-top:3px}
 .customer-order-lines{margin:12px 0;color:#67594d;font-size:12px;line-height:1.7}
 .customer-status-banner{margin-top:12px;padding:12px;border-radius:14px;background:#fff0d2;color:#86580d;font-size:13px;font-weight:850}
 .customer-status-banner.processing{background:#e9f8e8;color:#256b35}
 .customer-status-banner.done{background:#e7f5e9;color:#397549}
+.customer-status-banner.cancelled{background:#fde8e5;color:#9b3e35}
 .customer-total{display:flex;justify-content:space-between;border-top:1px solid #eee1ce;padding-top:10px;font-weight:900;color:var(--orange-dark)}
 @keyframes order-pulse{0%,100%{box-shadow:0 0 0 0 #60a96b00}50%{box-shadow:0 0 0 5px #60a96b20}}
 .empty-orders{text-align:center;padding:32px 12px;color:#887a6d}
@@ -160,15 +168,14 @@ h1{font:900 clamp(30px,4vw,46px)/1.06 var(--hand);letter-spacing:-.04em;margin:1
 .toast{position:fixed;right:18px;top:88px;z-index:30;max-width:min(380px,calc(100vw - 36px));padding:13px 17px;border:1px solid #f1c19f;border-radius:15px;background:#fff8eb;color:#8d4231;font-weight:800;box-shadow:var(--shadow);animation:toast-in .2s ease}
 @keyframes toast-in{from{transform:translateY(-7px);opacity:0}to{transform:none;opacity:1}}
 .hidden{display:none!important}
-@media(max-width:850px){.menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr .85fr}.food-art{height:auto;aspect-ratio:1/1}}
+@media(max-width:850px){.menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.food-art{height:auto;aspect-ratio:1/1}}
 @media(max-width:580px){
-  .shell{padding:9px 12px 150px}.topbar{height:58px;top:6px;padding:0 9px;border-radius:19px}.brand{gap:7px;font-size:13px}.brand-mark{width:36px;height:36px;font-size:21px;border-radius:13px}.brand small{font-size:8px}.nav{gap:1px}.nav button{padding:8px 10px;font-size:10px}
-  .hero{grid-template-columns:1fr;gap:13px;margin:17px 0;padding:18px;border-radius:24px}.hero-copy{padding:2px}.hero h1{font-size:31px;margin:10px 0 8px}.hero-copy p{font-size:13px}.hero-meta{gap:6px;margin-top:13px}.table-badge,.demo-badge,.hero-call,.customer-orders-link{font-size:10px;padding:7px 9px}.hero-visual img{height:auto;aspect-ratio:4/3;object-fit:contain;border-width:4px;border-radius:18px}.hero-sticker{font-size:10px}
-  .controls{align-items:stretch;flex-direction:column;gap:8px;margin:14px 0 12px}.search-wrap{max-width:none}.search{height:44px}.table-tag{text-align:center;padding:9px}
+  .shell{padding:9px 12px 150px}.topbar{min-height:58px;top:6px;flex-wrap:wrap;gap:7px;padding:7px 9px;border-radius:19px}.brand{gap:7px;flex:1}.brand-name{font-size:16px}.brand-mark{width:36px;height:36px;font-size:21px;border-radius:13px}.brand small{font-size:9px}.topbar-right{width:100%;justify-content:space-between;gap:5px}.header-context{gap:4px}.table-badge,.customer-orders-link{font-size:10px;padding:6px 7px}.nav{gap:1px}.nav button{padding:7px 8px;font-size:9px}
+  .controls{align-items:stretch;flex-direction:column;gap:8px;margin:14px 0 12px}.search-wrap{max-width:none}.search{height:44px}.manager-title{margin:14px 0 8px}.manager-title h1{font-size:25px}
   .tabs{gap:8px;margin:12px 0}.tab{flex:1;justify-content:center;padding:10px 8px;font-size:13px}.menu-heading h2{font-size:21px}.menu-heading p{font-size:10px}
-  .menu-grid{gap:9px}.food-card{padding:8px;border-radius:18px}.food-art{height:auto;aspect-ratio:1/1;border-radius:13px}.food-photo{padding:2px}.food-emoji{font-size:56px}.beer-svg{width:72px;height:96px}.food-info{padding:8px 2px 2px}.food-info h3{font-size:13px}.food-info .cn{font-size:9px}.food-info p{font-size:10px;min-height:37px;margin-top:5px}.food-bottom{margin-top:8px}.price{font-size:16px}.price small{font-size:9px}.add{width:34px;height:34px;font-size:23px}.variant{font-size:9px;padding:6px}
+  .menu-grid{gap:9px}.food-card{padding:8px;border-radius:18px}.food-art{height:auto;aspect-ratio:1/1;border-radius:13px}.food-photo{padding:2px}.food-emoji{font-size:56px}.beer-svg{width:72px;height:96px}.food-info{padding:8px 2px 2px}.food-info h3{font-size:13px}.food-info .cn{font-size:9px}.food-info p{font-size:10px;min-height:37px;margin-top:5px}.food-bottom{margin-top:8px}.price{font-size:13px;flex-wrap:wrap}.price small{font-size:8px}.add{width:34px;height:34px;font-size:23px}.variant{font-size:9px;padding:6px}
   .cartbar{bottom:8px;width:calc(100vw - 14px);padding:9px 9px 9px 11px;gap:6px;border-radius:18px}.cart-meta{gap:7px}.cart-icon{width:34px;height:34px;border-radius:12px;font-size:18px}.cart-copy strong{font-size:11px}.cart-copy span{font-size:10px}.cart-actions{gap:5px}.cart-button,.call-button{font-size:10px;padding:10px 9px;border-radius:12px}.call-button{gap:4px}
-  .section{padding:14px}.stats{gap:7px}.stat{padding:12px 9px}.stat strong{font-size:20px}.stat span,.stat em{font-size:9px}.alert-panel{align-items:flex-start;flex-direction:column;padding:13px}.alert-button{width:100%}.drawer{padding:18px 15px 23px}.overlay{padding:0}.drawer{border-radius:23px 23px 0 0}
+  .section{padding:14px}.admin-date-filter{align-items:stretch;flex-direction:column;gap:7px;padding:11px 12px}.admin-date-filter label{justify-content:space-between;font-size:12px}.admin-date-filter input{min-height:38px}.admin-date-hint{text-align:left;font-size:10px}.order-group-tabs{gap:6px}.order-group-tab{padding:9px 10px;font-size:10px}.stats{gap:7px}.stat{padding:12px 9px}.stat strong{font-size:20px}.stat span,.stat em{font-size:9px}.alert-panel{align-items:flex-start;flex-direction:column;padding:13px}.alert-button{width:100%}.order-actions{width:100%}.order-actions .mini{flex:1}.drawer{padding:18px 15px 23px}.overlay{padding:0}.drawer{border-radius:23px 23px 0 0}
 }
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
@@ -176,35 +183,22 @@ h1{font:900 clamp(30px,4vw,46px)/1.06 var(--hand);letter-spacing:-.04em;margin:1
 <body>
 <div class="shell">
   <header class="topbar">
-    <div class="brand"><div class="brand-mark">🐯</div><div>NHÀ TIGER<small>MENU GỌI MÓN TẠI BÀN</small></div></div>
-    <nav class="nav" aria-label="Chuyển trang">
-      <button id="navMenu" class="active" onclick="showView('menu')">Menu khách</button>
-      <button id="navAdmin" onclick="showView('admin')">Quản lý đơn</button>
-    </nav>
+    <div class="brand"><div class="brand-mark" aria-hidden="true">🐯</div><div><strong class="brand-name">NHÀ TIGER</strong><small>Ngon từ những điều nhỏ nhất 🤎</small></div></div>
+    <div class="topbar-right">
+      <div class="header-context">
+        <span class="table-badge">🪑 <strong id="tableName">Bàn 01</strong></span>
+        <button class="customer-orders-link" onclick="openCustomerOrders()">🧾 Đơn của tôi <span id="customerOrderCount"></span></button>
+      </div>
+      <nav class="nav" aria-label="Chuyển trang">
+        <button id="navMenu" class="active" onclick="showView('menu')">Menu khách</button>
+        <button id="navAdmin" onclick="showView('admin')">Quản lý đơn</button>
+      </nav>
+    </div>
   </header>
 
   <main id="menuView">
-    <section class="hero">
-      <div class="hero-copy">
-        <div class="eyebrow"><i></i> MENU NHÀ TIGER · 家虎菜单</div>
-        <h1>Món ngon, gọi ngay<br>tại bàn của bạn!</h1>
-        <p>Bánh mì nóng giòn, đồ uống mát lành — chọn món, thêm vào giỏ và gửi đơn cho Nhà Tiger nhé.</p>
-        <div class="hero-meta">
-          <span class="table-badge">🪑 Đang gọi: <strong id="tableName">Bàn 01</strong></span>
-          <span class="demo-badge" id="connectionBadge">Bản xem trước · cần kết nối Supabase để nhận đơn thật</span>
-          <button class="customer-orders-link" onclick="openCustomerOrders()">🧾 Đơn của tôi <span id="customerOrderCount"></span></button>
-          <a class="hero-call" href="tel:0328324410">☎ Gọi Vy Hằng</a>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <img src="./food-hero.png" alt="Bánh mì Lạng Sơn và trà trái cây tươi mát của Nhà Tiger">
-        <span class="hero-sticker">Ngon từ những điều nhỏ nhất ♡</span>
-      </div>
-    </section>
-
     <div class="controls">
       <label class="search-wrap"><span class="search-icon">⌕</span><input id="search" class="search" type="search" placeholder="Tìm món bạn thích..." oninput="renderMenu()"></label>
-      <div class="table-tag">Mã bàn: <strong id="tableTag">01</strong> · Quét QR tại bàn</div>
     </div>
 
     <div class="tabs" role="tablist" aria-label="Danh mục menu">
@@ -216,13 +210,7 @@ h1{font:900 clamp(30px,4vw,46px)/1.06 var(--hand);letter-spacing:-.04em;margin:1
   </main>
 
   <main id="adminView" class="hidden">
-    <section class="hero" style="grid-template-columns:1fr">
-      <div class="hero-copy">
-        <div class="eyebrow"><i></i> NHÀ TIGER · QUẢN LÝ</div>
-        <h1>Đơn hàng hôm nay</h1>
-        <p>Xem món khách đã gọi, số lượng, tổng tiền và cập nhật tình trạng phục vụ.</p>
-      </div>
-    </section>
+    <div class="manager-title"><div class="eyebrow"><i></i> NHÀ TIGER · QUẢN LÝ</div><h1>Đơn hàng</h1><p>Xem món khách đã gọi, số lượng, tổng tiền và cập nhật tình trạng phục vụ.</p></div>
     <section id="adminLogin" class="admin-login hidden">
       <h2>Đăng nhập quản lý</h2>
       <p>Chỉ tài khoản quản lý của Nhà Tiger mới xem và cập nhật đơn.</p>
@@ -233,10 +221,11 @@ h1{font:900 clamp(30px,4vw,46px)/1.06 var(--hand);letter-spacing:-.04em;margin:1
     </section>
     <div id="adminContent">
     <div class="admin-user"><span id="adminSignedIn"></span><button onclick="signOutAdmin()">Đăng xuất</button></div>
+    <section class="admin-date-filter"><label for="orderDate">📅 Xem đơn theo ngày <input id="orderDate" type="date" onchange="changeAdminDate(this.value)"></label><span class="admin-date-hint">Mặc định hôm nay · doanh thu chỉ cộng đơn hoàn thành</span></section>
     <section class="stats">
-      <div class="stat"><span>Tổng đơn</span><strong id="orderCount">0</strong><em>100 đơn gần nhất</em></div>
-      <div class="stat"><span>Đang xử lý</span><strong id="activeCount">0</strong><em>Chờ nhận hoặc đang làm</em></div>
-      <div class="stat"><span>Tổng tiền đơn</span><strong id="revenue">0đ</strong><em>Tổng giá trị đơn minh họa</em></div>
+      <div class="stat"><span>Tổng đơn trong ngày</span><strong id="orderCount">0</strong><em>Đơn nhận trong ngày đã chọn</em></div>
+      <div class="stat"><span>Đơn đang xử lý</span><strong id="activeCount">0</strong><em>Chờ nhận hoặc đang làm</em></div>
+      <div class="stat"><span>Doanh thu trong ngày</span><strong id="revenue">0đ</strong><em>Chỉ tính đơn hoàn thành</em></div>
     </section>
     <section class="alert-panel" aria-live="polite">
       <div class="alert-copy"><strong>Thông báo đơn mới</strong><span id="alertStatus">Bật chuông trên máy quán trước; sau đó mỗi đơn menu nhận được sẽ tự kêu.</span></div>
@@ -244,6 +233,11 @@ h1{font:900 clamp(30px,4vw,46px)/1.06 var(--hand);letter-spacing:-.04em;margin:1
     </section>
     <section class="section">
       <div class="section-head"><div><h2>Danh sách đơn</h2><p id="ordersHelp">Đơn gửi từ bản mẫu trên cùng trình duyệt sẽ hiện tại đây.</p></div><a class="hero-call" href="tel:0328324410">☎ 0328324410</a></div>
+      <div class="order-group-tabs" role="tablist" aria-label="Lọc nhóm trạng thái đơn">
+        <button id="orderTabNew" class="order-group-tab active" role="tab" aria-selected="true" onclick="setOrderGroup('new')">Chờ nhận <span id="countNew">0</span></button>
+        <button id="orderTabProcessing" class="order-group-tab" role="tab" aria-selected="false" onclick="setOrderGroup('processing')">Đang làm <span id="countProcessing">0</span></button>
+        <button id="orderTabHistory" class="order-group-tab" role="tab" aria-selected="false" onclick="setOrderGroup('history')">Đã xong / Đã hủy <span id="countHistory">0</span></button>
+      </div>
       <div id="orderList" class="order-list"></div>
     </section>
     </div>
@@ -292,15 +286,13 @@ let activeGroup='food',cart={},soundEnabled=false,audioContext=null,knownOrderId
 const cfg=window.NHATIGER_CONFIG||{};
 const supabaseReady=!!(window.supabase&&cfg.supabaseUrl&&cfg.supabasePublishableKey);
 const supabaseClient=supabaseReady?window.supabase.createClient(cfg.supabaseUrl,cfg.supabasePublishableKey):null;
-let adminSession=null,realtimeChannel=null,remoteOrders=[],customerOrders=loadCustomerOrders(),customerChannels={},customerStatusTimer=null,cartNoteDraft='',cartTableDraft='';
+let adminSession=null,realtimeChannel=null,remoteOrders=[],customerOrders=loadCustomerOrders(),customerChannels={},customerStatusTimer=null,cartNoteDraft='',cartTableDraft='',activeOrderGroup='new',selectedAdminDate=localDateKey(new Date()),ordersLoadSequence=0;
 let table=new URLSearchParams(location.search).get('table')||'01';
 if(!/^\d{1,3}$/.test(table))table='01';
 table=table.padStart(2,'0');cartTableDraft=table;
 document.getElementById('tableName').textContent='Bàn '+table;
-document.getElementById('tableTag').textContent=table;
 
 function money(n){return new Intl.NumberFormat('vi-VN').format(n)+'đ'}
-function shortPrice(n){return Math.round(n/1000)+'k'}
 function beerCan(kind){
   const h=kind==='hanoi',id=h?'hanoi':'saigon';
   const body=h?'#f4c83c':'#f7f4ee',edge=h?'#d84336':'#d84336',label=h?'HÀ NỘI':'SAIGON';
@@ -338,9 +330,9 @@ function renderMenu(){
   });
   document.getElementById('itemCount').textContent=items.length+' món';
   document.getElementById('menuGrid').innerHTML=items.length?items.map(function(item){
-    const priceText=item.options?item.options.map(function(v){return shortPrice(v.price)}).filter(function(v,i,a){return a.indexOf(v)===i}).join(' / '):shortPrice(item.price);
+    const priceText=item.options?item.options.map(function(v){return money(v.price)}).filter(function(v,i,a){return a.indexOf(v)===i}).join(' / '):money(item.price);
     const art=item.image?'<img class="food-photo" src="'+item.image+'" alt="'+item.name+'" loading="lazy">':item.beer?beerCan(item.beer):'<span class="food-emoji" aria-hidden="true">'+item.art+'</span>';
-    const variant=item.options?'<select class="variant" id="variant-'+item.id+'" aria-label="Chọn loại '+item.name+'">'+item.options.map(function(v,i){return '<option value="'+i+'">'+v.name+' · '+shortPrice(v.price)+'</option>'}).join('')+'</select>':'';
+    const variant=item.options?'<select class="variant" id="variant-'+item.id+'" aria-label="Chọn loại '+item.name+'">'+item.options.map(function(v,i){return '<option value="'+i+'">'+v.name+' · '+money(v.price)+'</option>'}).join('')+'</select>':'';
     return '<article class="food-card"><div class="food-art">'+art+'</div><div class="food-info"><div class="food-title-row"><div><h3>'+item.name+'</h3><span class="cn">'+item.cn+'</span></div></div><p>'+item.desc+'</p>'+variant+'<div class="food-bottom"><div class="price">'+priceText+'<small>'+(item.unit||'')+'</small></div><button class="add" aria-label="Thêm '+item.name+'" onclick="addCart(\''+item.id+'\')">+</button></div></div></article>';
   }).join(''):'<div class="empty">Không tìm thấy món phù hợp. Thử tìm tên món khác nhé.</div>';
 }
@@ -386,11 +378,13 @@ function saveOrders(orders){if(supabaseClient){remoteOrders=orders;return}localS
 function loadCustomerOrders(){try{const saved=JSON.parse(localStorage.getItem('nhatigerCustomerOrders')||'[]');return Array.isArray(saved)?saved.filter(function(order){return order&&order.id&&Array.isArray(order.lines)}).slice(0,10):[]}catch(error){return []}}
 function saveCustomerOrders(){customerOrders=customerOrders.slice(0,10);localStorage.setItem('nhatigerCustomerOrders',JSON.stringify(customerOrders));renderCustomerOrderCount()}
 function renderCustomerOrderCount(){const node=document.getElementById('customerOrderCount');if(node)node.textContent=customerOrders.length?'('+customerOrders.length+')':''}
-function normalizeStatus(status){if(status==='Mới')return 'new';if(status==='Đang làm')return 'processing';if(status==='Đã xong')return 'done';return ['new','processing','done'].includes(status)?status:'new'}
-function statusLabel(status){return ({new:'Đã gửi · chờ quán nhận',processing:'Quán đang làm món cho bạn',done:'Đơn đã hoàn thành'})[normalizeStatus(status)]}
-function rowToOrder(row){return {id:row.id,table:'Bàn '+row.table_code,tableCode:row.table_code,lines:Array.isArray(row.items)?row.items:[],total:Number(row.total||0),note:row.note||'',status:normalizeStatus(row.status),time:new Date(row.created_at).toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'})}}
+function localDateKey(value){const date=value instanceof Date?value:new Date(value);if(Number.isNaN(date.getTime()))return '';return date.getFullYear()+'-'+String(date.getMonth()+1).padStart(2,'0')+'-'+String(date.getDate()).padStart(2,'0')}
+function formatDateTime(value){const date=value instanceof Date?value:new Date(value);if(Number.isNaN(date.getTime()))return 'Không rõ thời gian';return new Intl.DateTimeFormat('vi-VN',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit',year:'numeric',hour12:false}).format(date)}
+function normalizeStatus(status){if(status==='Mới')return 'new';if(status==='Đang làm')return 'processing';if(status==='Đã xong')return 'done';if(status==='Đã hủy')return 'cancelled';return ['new','processing','done','cancelled'].includes(status)?status:'new'}
+function statusLabel(status){return ({new:'Chờ quán nhận',processing:'Quán đang làm món cho bạn',done:'Đã hoàn thành',cancelled:'Đã hủy'})[normalizeStatus(status)]}
+function rowToOrder(row){return {id:row.id,table:'Bàn '+row.table_code,tableCode:row.table_code,lines:Array.isArray(row.items)?row.items:[],total:Number(row.total||0),note:row.note||'',status:normalizeStatus(row.status),createdAt:row.created_at,time:formatDateTime(row.created_at)}}
 function makeUuid(){if(window.crypto&&typeof window.crypto.randomUUID==='function')return window.crypto.randomUUID();const bytes=new Uint8Array(16);window.crypto.getRandomValues(bytes);bytes[6]=(bytes[6]&15)|64;bytes[8]=(bytes[8]&63)|128;const hex=Array.from(bytes,function(value){return value.toString(16).padStart(2,'0')}).join('');return hex.slice(0,8)+'-'+hex.slice(8,12)+'-'+hex.slice(12,16)+'-'+hex.slice(16,20)+'-'+hex.slice(20)}
-function customerStatusClass(status){return normalizeStatus(status)==='processing'?'processing':normalizeStatus(status)==='done'?'done':''}
+function customerStatusClass(status){const value=normalizeStatus(status);return value==='processing'?'processing':value==='done'?'done':value==='cancelled'?'cancelled':''}
 function renderCustomerOrders(){
   const drawer=document.getElementById('drawer');drawer.dataset.view='customer-orders';
   const list=customerOrders.map(function(order){
@@ -409,14 +403,15 @@ function updateCustomerOrderStatus(orderId,status,notify){
   if(document.getElementById('overlay').classList.contains('hidden')===false&&document.getElementById('drawer').dataset.view==='customer-orders')renderCustomerOrders();
   if(notify&&next==='processing'){toast('Quán đang làm món cho bạn 🍳');if(navigator.vibrate)navigator.vibrate([180,80,180])}
   if(notify&&next==='done')toast('Đơn hàng của bạn đã hoàn thành 🎉');
+  if(notify&&next==='cancelled')toast('Quán đã hủy đơn hàng của bạn.');
 }
 async function refreshCustomerOrderStatus(order){
-  if(!supabaseClient||!order.customerToken||normalizeStatus(order.status)==='done')return;
+  if(!supabaseClient||!order.customerToken||['done','cancelled'].includes(normalizeStatus(order.status)))return;
   const {data,error}=await supabaseClient.rpc('get_customer_order_status',{p_order_id:order.id,p_customer_token:order.customerToken});
   if(!error&&data)updateCustomerOrderStatus(order.id,data,true);
 }
 function startCustomerOrderTracking(order){
-  if(!supabaseClient||!order.customerToken||normalizeStatus(order.status)==='done'||customerChannels[order.id])return;
+  if(!supabaseClient||!order.customerToken||['done','cancelled'].includes(normalizeStatus(order.status))||customerChannels[order.id])return;
   const topic='nhatiger-order:'+order.id+':'+order.customerToken;
   customerChannels[order.id]=supabaseClient.channel(topic,{config:{private:false}}).on('broadcast',{event:'order_status'},function(message){
     const payload=message&&message.payload;if(payload&&payload.order_id===order.id)updateCustomerOrderStatus(order.id,payload.status,true);
@@ -449,7 +444,10 @@ async function signOutAdmin(){
 }
 async function loadRemoteOrders(){
   if(!supabaseClient||!adminSession)return;
-  const {data,error}=await supabaseClient.from('orders').select('id,table_code,items,total,note,status,created_at').order('created_at',{ascending:false}).limit(100);
+  const requestedDate=selectedAdminDate,requestSequence=++ordersLoadSequence;
+  const start=new Date(requestedDate+'T00:00:00'),end=new Date(start);end.setDate(end.getDate()+1);
+  const {data,error}=await supabaseClient.from('orders').select('id,table_code,items,total,note,status,created_at').gte('created_at',start.toISOString()).lt('created_at',end.toISOString()).order('created_at',{ascending:false});
+  if(requestSequence!==ordersLoadSequence||requestedDate!==selectedAdminDate)return;
   if(error){toast('Không tải được đơn. Kiểm tra SQL và quyền Supabase.');return}
   remoteOrders=(data||[]).map(rowToOrder);remoteOrders.forEach(function(order){knownOrderIds.add(order.id)});renderOrders();
 }
@@ -458,15 +456,15 @@ function subscribeToOrders(){
   if(realtimeChannel)supabaseClient.removeChannel(realtimeChannel);
   realtimeChannel=supabaseClient.channel('nhatiger-orders').on('postgres_changes',{event:'INSERT',schema:'public',table:'orders'},function(payload){handleIncomingOrder(rowToOrder(payload.new))}).on('postgres_changes',{event:'UPDATE',schema:'public',table:'orders'},function(payload){
     const updated=rowToOrder(payload.new),index=remoteOrders.findIndex(function(order){return order.id===updated.id});
-    if(index>=0)remoteOrders[index]=updated;else remoteOrders.unshift(updated);renderOrders();
+    if(index>=0)remoteOrders[index]=updated;else if(localDateKey(updated.createdAt)===selectedAdminDate)remoteOrders.unshift(updated);renderOrders();
   }).subscribe();
 }
 async function initializeSupabase(){
-  if(!supabaseClient){document.getElementById('connectionBadge').textContent='Bản xem trước · chưa cấu hình nhận đơn liên thiết bị';document.getElementById('footerMode').textContent='Menu xem trước · gửi đơn từ thiết bị khác cần cấu hình Supabase.';return}
-  document.getElementById('connectionBadge').textContent='Menu gọi món trực tuyến · đơn đồng bộ với quán';
+  if(!supabaseClient){document.getElementById('footerMode').textContent='Menu xem trước · gửi đơn từ thiết bị khác cần cấu hình Supabase.';return}
   document.getElementById('ordersHelp').textContent='Đơn từ các bàn sẽ cập nhật trực tiếp khi trang quản lý đang mở.';
   document.getElementById('footerMode').textContent='Menu gọi món Nhà Tiger · đơn được gửi trực tiếp tới quán.';
   startCustomerTracking();
+  const dateInput=document.getElementById('orderDate');if(dateInput)dateInput.value=selectedAdminDate;
   showAdminAccess();
   const {data}=await supabaseClient.auth.getSession();adminSession=data.session;
   showAdminAccess();
@@ -511,10 +509,9 @@ function notifyNewOrder(order){
 function handleIncomingOrder(order){
   if(!order||!order.id||knownOrderIds.has(order.id))return;
   knownOrderIds.add(order.id);
-  if(supabaseClient){
+  if(supabaseClient&&localDateKey(order.createdAt)===selectedAdminDate){
     remoteOrders=remoteOrders.filter(function(existing){return existing.id!==order.id});
     remoteOrders.unshift(order);
-    remoteOrders=remoteOrders.slice(0,100);
   }
   notifyNewOrder(order);renderOrders();
 }
@@ -525,7 +522,7 @@ async function submitOrder(){
   const enteredTable=(tableInput?tableInput.value:cartTableDraft).trim();
   if(!/^\d{1,3}$/.test(enteredTable)){toast('Nhập số bàn từ 1 đến 3 chữ số nhé.');if(tableInput)tableInput.focus();return}
   table=enteredTable.padStart(2,'0');cartTableDraft=table;
-  document.getElementById('tableName').textContent='Bàn '+table;document.getElementById('tableTag').textContent=table;
+  document.getElementById('tableName').textContent='Bàn '+table;
   const items=lines.map(function(line){return {name:line.item.name+(line.variant?' · '+line.variant.name:''),qty:line.qty,price:line.price}});
   const note=(noteInput?noteInput.value:cartNoteDraft).trim(),total=cartTotal(),orderId=makeUuid(),customerToken=supabaseClient?makeUuid():'';
   const submitButton=document.querySelector('.submit');submittingOrder=true;if(submitButton){submitButton.disabled=true;submitButton.textContent='Đang gửi đơn…'}
@@ -533,32 +530,50 @@ async function submitOrder(){
     const {error}=await supabaseClient.from('orders').insert({id:orderId,customer_token:customerToken,table_code:table,items:items,total:total,note:note,status:'new'});
     if(error){submittingOrder=false;if(submitButton){submitButton.disabled=false;submitButton.textContent='Gửi đơn hàng · '+money(total)}toast('Chưa gửi được đơn. Hãy kiểm tra đã chạy tệp nâng cấp Supabase rồi thử lại.');return}
   }
-  const order={id:supabaseClient?orderId:'NT-'+String(Date.now()).slice(-6),customerToken:customerToken,table:'Bàn '+table,tableCode:table,lines:items,total:total,note:note,status:'new',time:new Date().toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'})};
+  const createdAt=new Date().toISOString();
+  const order={id:supabaseClient?orderId:'NT-'+String(Date.now()).slice(-6),customerToken:customerToken,table:'Bàn '+table,tableCode:table,lines:items,total:total,note:note,status:'new',createdAt:createdAt,time:formatDateTime(createdAt)};
   if(!supabaseClient){
     const orders=readOrders();orders.unshift(order);saveOrders(orders)
   }
   customerOrders.unshift(order);saveCustomerOrders();startCustomerOrderTracking(order);
   cart={};cartNoteDraft='';cartTableDraft=table;submittingOrder=false;closeCart();updateCart();renderOrders();openCustomerOrders();toast('Đơn đã gửi tới Nhà Tiger');
 }
+function orderDateKey(order){return localDateKey(order.createdAt||order.created_at)||localDateKey(new Date())}
+function changeAdminDate(value){if(!/^\d{4}-\d{2}-\d{2}$/.test(value))return;selectedAdminDate=value;remoteOrders=[];renderOrders();if(supabaseClient&&adminSession)loadRemoteOrders()}
+function setOrderGroup(group){activeOrderGroup=group;renderOrders()}
+function renderOrderGroupTabs(counts){
+  const groups=[['new','orderTabNew','countNew'],['processing','orderTabProcessing','countProcessing'],['history','orderTabHistory','countHistory']];
+  groups.forEach(function(entry){const selected=activeOrderGroup===entry[0],button=document.getElementById(entry[1]);button.classList.toggle('active',selected);button.setAttribute('aria-selected',selected?'true':'false');document.getElementById(entry[2]).textContent=counts[entry[0]]});
+}
 function renderOrders(){
-  if(supabaseClient&&!adminSession){document.getElementById('orderList').innerHTML='<div class="empty-orders">Đăng nhập tài khoản quản lý để xem đơn.</div>';document.getElementById('orderCount').textContent='0';document.getElementById('activeCount').textContent='0';document.getElementById('revenue').textContent='0đ';return}
-  const orders=readOrders();
-  const active=orders.filter(function(o){return normalizeStatus(o.status)!=='done'}).length;
-  const revenue=orders.reduce(function(sum,o){return sum+(o.total||0)},0);
-  document.getElementById('orderCount').textContent=orders.length;
+  const dateInput=document.getElementById('orderDate');if(dateInput&&dateInput.value!==selectedAdminDate)dateInput.value=selectedAdminDate;
+  if(supabaseClient&&!adminSession){document.getElementById('orderList').innerHTML='<div class="empty-orders">Đăng nhập tài khoản quản lý để xem đơn.</div>';document.getElementById('orderCount').textContent='0';document.getElementById('activeCount').textContent='0';document.getElementById('revenue').textContent='0đ';renderOrderGroupTabs({new:0,processing:0,history:0});return}
+  const allOrders=readOrders().filter(function(order){return orderDateKey(order)===selectedAdminDate});
+  const counts={new:0,processing:0,history:0};
+  allOrders.forEach(function(order){const status=normalizeStatus(order.status);if(status==='new')counts.new++;else if(status==='processing')counts.processing++;else counts.history++});
+  const active=counts.new+counts.processing;
+  const revenue=allOrders.reduce(function(sum,order){return sum+(normalizeStatus(order.status)==='done'?Number(order.total||0):0)},0);
+  document.getElementById('orderCount').textContent=allOrders.length;
   document.getElementById('activeCount').textContent=active;
   document.getElementById('revenue').textContent=money(revenue);
-  document.getElementById('orderList').innerHTML=orders.length?orders.map(function(order,index){
-    const status=normalizeStatus(order.status),badgeClass=status==='processing'?'prep':status==='done'?'done':'';
-    const next=status==='new'?'processing':status==='processing'?'done':'';
+  renderOrderGroupTabs(counts);
+  const orders=allOrders.filter(function(order){const status=normalizeStatus(order.status);return activeOrderGroup==='history'?(status==='done'||status==='cancelled'):status===activeOrderGroup});
+  document.getElementById('orderList').innerHTML=orders.length?orders.map(function(order){
+    const status=normalizeStatus(order.status),badgeClass=status==='processing'?'prep':status==='done'?'done':status==='cancelled'?'cancelled':'';
+    const code=String(order.id).slice(-6).toUpperCase();
     const lines=order.lines.map(function(line){return escapeHTML(line.qty+' × '+line.name)}).join('<br>');
-    return '<article class="order-card"><div class="order-top"><div><div class="order-id">'+escapeHTML(order.id)+' · '+escapeHTML(order.table)+'</div><div class="order-time">'+escapeHTML(order.time)+' · Thanh toán tại quầy</div></div><span class="badge '+badgeClass+'">'+escapeHTML(statusLabel(status))+'</span></div><div class="order-items">'+lines+(order.note?'<br><b>Ghi chú:</b> '+escapeHTML(order.note):'')+'</div><div class="order-bottom"><strong>'+money(order.total)+'</strong>'+(next?'<button class="mini" onclick="setOrderStatus('+index+',\''+next+'\')">'+(next==='processing'?'Nhận đơn':'Đánh dấu xong')+'</button>':'<span class="footer-small">Đã phục vụ</span>')+'</div></article>';
-  }).join(''):'<div class="empty-orders">Chưa có đơn hàng nào.<br>Đơn tạo trong bản mẫu trên trình duyệt này sẽ hiện ở đây.</div>';
+    let actions='';
+    if(status==='new')actions='<button class="mini" onclick="setOrderStatus(\''+escapeHTML(order.id)+'\',\'processing\')">Nhận đơn</button><button class="mini cancel" onclick="setOrderStatus(\''+escapeHTML(order.id)+'\',\'cancelled\')">Hủy đơn</button>';
+    else if(status==='processing')actions='<button class="mini" onclick="setOrderStatus(\''+escapeHTML(order.id)+'\',\'done\')">Hoàn thành đơn</button><button class="mini cancel" onclick="setOrderStatus(\''+escapeHTML(order.id)+'\',\'cancelled\')">Hủy đơn</button>';
+    else actions='<span class="footer-small">'+(status==='done'?'Đã hoàn thành':'Đã hủy')+'</span>';
+    return '<article class="order-card"><div class="order-top"><div><div class="order-id">Mã #'+escapeHTML(code)+' · '+escapeHTML(order.table||('Bàn '+order.tableCode))+'</div><div class="order-time">'+escapeHTML(order.time||formatDateTime(order.createdAt||order.created_at))+' · Thanh toán tại quầy</div></div><span class="badge '+badgeClass+'">'+escapeHTML(statusLabel(status))+'</span></div><div class="order-items">'+lines+(order.note?'<br><b>Ghi chú:</b> '+escapeHTML(order.note):'')+'</div><div class="order-bottom"><strong>'+money(order.total)+'</strong><div class="order-actions">'+actions+'</div></div></article>';
+  }).join(''):'<div class="empty-orders">'+(activeOrderGroup==='new'?'Không có đơn đang chờ nhận.':activeOrderGroup==='processing'?'Không có đơn đang làm.':'Chưa có đơn hoàn thành hoặc đã hủy trong ngày này.')+'</div>';
 }
 function escapeHTML(value){return String(value).replace(/[&<>"']/g,function(char){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]})}
-async function setOrderStatus(index,status){const orders=readOrders();if(!orders[index])return;
-  if(supabaseClient){const {error}=await supabaseClient.from('orders').update({status:status}).eq('id',orders[index].id);if(error){toast('Chưa cập nhật được trạng thái đơn.');return}}
-  orders[index].status=status;saveOrders(orders);renderOrders();toast('Đã cập nhật: '+statusLabel(status))}
+async function setOrderStatus(orderId,status){const orders=readOrders(),order=orders.find(function(item){return item.id===orderId});if(!order)return;
+  if(status==='cancelled'&&!window.confirm('Xác nhận hủy đơn này?'))return;
+  if(supabaseClient){const {error}=await supabaseClient.from('orders').update({status:status}).eq('id',order.id);if(error){toast('Chưa cập nhật được trạng thái đơn.');return}}
+  order.status=status;saveOrders(orders);renderOrders();toast('Đã cập nhật: '+statusLabel(status))}
 function showView(view){
   const isMenu=view==='menu';document.getElementById('menuView').classList.toggle('hidden',!isMenu);document.getElementById('adminView').classList.toggle('hidden',isMenu);
   document.getElementById('navMenu').classList.toggle('active',isMenu);document.getElementById('navAdmin').classList.toggle('active',!isMenu);
@@ -572,6 +587,7 @@ window.addEventListener('storage',function(event){
   try{const incoming=JSON.parse(event.newValue);incoming.forEach(function(order){handleIncomingOrder(order)})}catch(error){}
 });
 if(!supabaseClient)readOrders().forEach(function(order){if(order.id)knownOrderIds.add(order.id)});
+document.getElementById('orderDate').value=selectedAdminDate;
 showAdminAccess();updateAlertUI();renderCustomerOrderCount();
 renderMenu();updateCart();renderOrders();initializeSupabase();
 </script>
