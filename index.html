@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fffbf0">
+<title>Menu Nhà Tiger — Gọi món tại bàn</title>
+<style>
+:root{
+  --paper:#fffbf0;--paper-deep:#fff4df;--white:#fffefa;--ink:#29221d;--muted:#786f66;
+  --orange:#ee633e;--orange-dark:#c9472c;--peach:#ffe1cc;--yellow:#ffc94d;--line:#e8cba5;
+  --green:#43865a;--shadow:0 12px 30px rgba(91,59,32,.10);--hand:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font:15px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background-color:var(--paper);background-image:radial-gradient(#e9c89645 .8px,transparent .8px);background-size:13px 13px}
+button,input,select{font:inherit}button{cursor:pointer}
+.shell{max-width:1120px;margin:auto;padding:14px 22px 145px}
+.topbar{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border:2px dashed #e9bd86;border-radius:24px;background:#fffdf7eF;box-shadow:0 7px 22px #805b3412;position:sticky;top:10px;z-index:8;backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:10px;font:900 16px/1 var(--hand);letter-spacing:.02em}
+.brand-mark{width:43px;height:43px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(145deg,#ffdc70,#ff956e);font-size:25px;box-shadow:0 4px 12px #cb743533}
+.brand small{display:block;color:#8c7764;font:700 9px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.16em;margin-top:5px}
+.nav{display:flex;align-items:center;gap:5px;padding:4px;background:#f4eee5;border-radius:999px}
+.nav button{border:0;border-radius:999px;background:transparent;color:#6b5c4e;padding:9px 15px;font-size:13px;font-weight:750;transition:.2s}
+.nav button.active{background:var(--orange);color:white;box-shadow:0 4px 12px #ee633e40}
+.nav button:hover{transform:translateY(-1px)}
+.hero{display:grid;grid-template-columns:1.03fr .97fr;align-items:center;gap:24px;margin:24px 0 20px;padding:24px;border:2px dashed #e4ba8b;border-radius:30px;background:linear-gradient(120deg,#fff0d9,#ffdfcf 54%,#fff0d4);box-shadow:var(--shadow);overflow:hidden}
+.hero-copy{padding:4px 8px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--orange-dark);font-size:11px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}
+.eyebrow i{width:8px;height:8px;border-radius:50%;background:#ef7545;box-shadow:0 0 0 5px #ef75451c}
+h1{font:900 clamp(30px,4vw,46px)/1.06 var(--hand);letter-spacing:-.04em;margin:13px 0 11px;color:#3a2419}
+.hero-copy p{max-width:470px;color:#6d5949;margin:0}
+.hero-meta{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-top:18px}
+.table-badge,.demo-badge{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:800}
+.table-badge{background:#fffdf5;border:1px solid #ebc99f;color:#694b32}
+.demo-badge{background:#fff9edb8;border:1px solid #f0d7b5;color:#876947}
+.hero-call{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:9px 13px;background:#fff7eb;color:#ab4937;text-decoration:none;font-size:12px;font-weight:850;border:1px solid #f1c5a7}
+.hero-call:hover{background:white}
+.hero-visual{position:relative;min-width:0}
+.hero-visual img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;object-position:center;background:#fffaf1;border:5px solid #fffdf7;border-radius:23px;box-shadow:0 12px 28px #79452128}
+.hero-sticker{position:absolute;right:12px;top:12px;background:#fffdf4;color:#9c492d;padding:7px 11px;border:1px dashed #e7aa75;border-radius:15px;font:800 12px var(--hand);transform:rotate(4deg)}
+.controls{display:flex;align-items:center;gap:12px;margin:18px 0 16px}
+.search-wrap{position:relative;flex:1;max-width:560px}
+.search-icon{position:absolute;left:15px;top:50%;transform:translateY(-50%);font-size:17px;color:#9d8973}
+.search{width:100%;height:48px;padding:0 16px 0 43px;background:#fff;border:1px solid #eadcc8;border-radius:17px;outline:0;box-shadow:0 5px 16px #73532a12;color:var(--ink)}
+.search:focus{border-color:#ec9169;box-shadow:0 0 0 4px #ee633e17}
+.table-tag{padding:12px 15px;border:1px dashed #d9b987;background:#fffdf7;border-radius:16px;color:#74604c;white-space:nowrap;font-size:13px}
+.table-tag strong{color:#3b2a20}
+.tabs{display:flex;gap:10px;margin:14px 0 17px}
+.tab{display:flex;align-items:center;gap:9px;border:1px solid #eadcc8;border-radius:999px;background:#fff;color:#514238;padding:12px 20px;font-weight:850;box-shadow:0 4px 12px #73532a0b;transition:.18s}
+.tab span{font-size:18px}
+.tab.active{background:var(--orange);border-color:var(--orange);color:#fff;box-shadow:0 6px 16px #ee633e38}
+.tab:hover{transform:translateY(-2px)}
+.menu-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:5px 0 12px}
+.menu-heading h2{font:900 24px/1.1 var(--hand);margin:0;color:#3d2b20}
+.menu-heading p{font-size:12px;color:#8b7967;margin:0}
+.menu-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.food-card{background:#fffefa;border:2px dashed #e7c99f;border-radius:23px;padding:12px;box-shadow:0 7px 18px #674a2c0d;transition:transform .2s,box-shadow .2s,border-color .2s;overflow:hidden}
+.food-card:hover{transform:translateY(-4px) rotate(-.25deg);border-color:#eda876;box-shadow:0 15px 28px #674a2c18}
+.food-art{height:auto;aspect-ratio:1/1;position:relative;display:grid;place-items:center;border-radius:16px;background:radial-gradient(circle at 50% 45%,#fff 0 25%,#fff0dc 26% 67%,#fff8eb 68% 100%);overflow:hidden}
+.food-art:before{content:"";position:absolute;width:122px;height:31px;bottom:5px;border-radius:50%;background:#aa76532b;filter:blur(10px)}
+.food-emoji{position:relative;z-index:1;font-size:70px;line-height:1;filter:drop-shadow(0 8px 6px #65482e30);transform:translateY(-2px)}
+.food-photo{position:relative;z-index:1;width:100%;height:100%;display:block;object-fit:contain;object-position:center;background:#fffaf1;padding:3px;filter:saturate(1.08) contrast(1.02)}
+.food-info{padding:10px 4px 2px}
+.food-title-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.food-info h3{font:850 16px/1.2 var(--hand);margin:0;color:#38271d}
+.food-info .cn{display:block;color:#8a7460;font-size:11px;margin-top:3px}
+.food-info p{font-size:11px;line-height:1.4;color:#817468;margin:7px 0 0;min-height:30px}
+.food-bottom{display:flex;align-items:center;justify-content:space-between;gap:9px;margin-top:11px}
+.price{display:flex;align-items:baseline;gap:5px;color:var(--orange-dark);font:900 19px/1 var(--hand)}
+.price small{font:650 10px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#89786a}
+.add{display:grid;place-items:center;width:39px;height:39px;border:0;border-radius:50%;background:linear-gradient(145deg,#ff8c62,#ee5642);color:white;font-size:26px;font-weight:650;line-height:1;box-shadow:0 5px 12px #e65d433b;transition:transform .16s,box-shadow .16s}
+.add:hover{transform:scale(1.1) rotate(5deg);box-shadow:0 8px 17px #e65d4350}
+.add:active{transform:scale(.92)}
+.variant{width:100%;margin-top:9px;padding:7px 9px;border:1px solid #efd9bc;border-radius:11px;background:#fff9ef;color:#6c5140;font-size:11px;outline-color:#ec9169}
+.beer-svg{position:relative;z-index:1;width:90px;height:116px;filter:drop-shadow(0 7px 6px #7044212d)}
+.empty{text-align:center;padding:36px;color:#857466}
+.cartbar{position:fixed;z-index:12;left:50%;bottom:15px;transform:translateX(-50%);width:min(930px,calc(100vw - 26px));display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 13px 11px 20px;border-radius:22px;background:linear-gradient(105deg,#e95348,#f27a48);border:1px solid #ff9d7e;color:#fff;box-shadow:0 14px 38px #81392e4a;backdrop-filter:blur(12px)}
+.cart-meta{display:flex;align-items:center;gap:13px}
+.cart-icon{width:42px;height:42px;border-radius:15px;display:grid;place-items:center;background:#ffffff26;font-size:21px}
+.cart-copy strong{display:block;font-size:14px}
+.cart-copy span{display:block;color:#fff0e9;font-size:12px}
+.cart-actions{display:flex;align-items:center;gap:8px}
+.cart-button,.call-button{border:0;border-radius:14px;padding:12px 16px;font-size:13px;font-weight:900;white-space:nowrap;transition:transform .16s,background .16s}
+.cart-button{background:#fffdf7;color:#c5483e;box-shadow:0 4px 12px #9c38331c}
+.cart-button:hover{background:#fff2e7;transform:translateY(-1px)}
+.call-button{display:inline-flex;align-items:center;gap:7px;background:#bd3e38;color:white;border:1px solid #ffb09a;text-decoration:none}
+.call-button:hover{background:#a93430}
+.cartbar.bump{animation:cart-pop .34s ease}
+.add.bounce{animation:plus-bounce .36s ease}
+@keyframes plus-bounce{0%,100%{transform:scale(1)}42%{transform:scale(1.22) rotate(7deg)}72%{transform:scale(.94)}}
+@keyframes cart-pop{0%,100%{transform:translateX(-50%) scale(1)}45%{transform:translateX(-50%) scale(1.035)}}
+.section{margin-top:23px;padding:20px;border:2px dashed #e7c99f;border-radius:24px;background:#fffefa;box-shadow:var(--shadow)}
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.section-head h2{font:900 22px var(--hand);margin:0}
+.section-head p{font-size:12px;color:#847668;margin:3px 0 0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.admin-login{max-width:460px;margin:22px auto;padding:22px;border:2px dashed #e7c99f;border-radius:24px;background:#fffefa;box-shadow:var(--shadow)}
+.admin-login h2{font:900 22px var(--hand);margin:0 0 8px}.admin-login p{font-size:13px;color:var(--muted)}
+.admin-login input{width:100%;height:46px;margin:7px 0;padding:0 13px;border:1px solid #ead7bd;border-radius:12px;background:#fffaf3;outline-color:#ec9169}
+.admin-login button{width:100%;margin-top:8px;border:0;border-radius:13px;padding:13px;background:var(--orange);color:#fff;font-weight:900}
+.admin-login .login-error{min-height:18px;color:#b5392c;font-size:12px}
+.admin-user{display:flex;justify-content:flex-end;margin:10px 0;color:var(--muted);font-size:12px}
+.admin-user button{border:1px solid #e8cba5;border-radius:999px;background:#fffefa;color:#694b32;padding:7px 12px;font-weight:800;margin-left:8px}
+.stat{padding:17px;border:1px dashed #e7c99f;border-radius:20px;background:#fffefa;box-shadow:0 7px 18px #674a2c0d}
+.stat span{font-size:12px;color:#817366}
+.stat strong{display:block;font:900 25px var(--hand);color:#3c2c22;margin:6px 0}
+.stat em{font-style:normal;color:var(--orange-dark);font-size:11px}
+.alert-panel{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:14px 0;padding:15px 17px;border:2px dashed #e9aa73;border-radius:19px;background:linear-gradient(100deg,#fff1dc,#ffe6d4)}
+.alert-copy strong{display:block;color:#74402b;font-size:14px}.alert-copy span{display:block;color:#806c5c;font-size:11px;margin-top:3px}
+.alert-button{border:0;border-radius:14px;padding:11px 15px;background:#e95348;color:#fff;font-weight:900;box-shadow:0 5px 13px #b84b3838;white-space:nowrap}
+.alert-button.enabled{background:#397d50;box-shadow:0 5px 13px #397d5030}.alert-button:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.order-list{display:grid;gap:11px}
+.order-card{padding:15px;border:1px dashed #e7c99f;border-radius:17px;background:#fffaf1}
+.order-top{display:flex;justify-content:space-between;gap:10px}
+.order-id{font-weight:900}
+.order-time{font-size:11px;color:#897969;margin-top:3px}
+.badge{padding:5px 9px;border-radius:999px;background:#fff0d2;color:#936616;font-size:11px;font-weight:800;white-space:nowrap}
+.badge.prep{background:#e9f1ff;color:#38669e}.badge.done{background:#e7f5e9;color:#397549}
+.order-items{margin:12px 0;color:#67594d;font-size:12px;line-height:1.7}
+.order-bottom{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #eee1ce;padding-top:10px}
+.order-bottom strong{color:var(--orange-dark)}
+.mini{border:1px solid #edc9a1;background:#fff7eb;border-radius:10px;padding:7px 10px;color:#98543d;font-size:11px;font-weight:800}
+.empty-orders{text-align:center;padding:32px 12px;color:#887a6d}
+.footer{margin:35px auto 0;text-align:center}
+.footer-thanks{font:850 14px var(--hand);color:#71563d;margin-bottom:10px}
+.footer-contact{display:inline-flex;align-items:center;gap:9px;padding:10px 17px;border:2px dashed #e79375;border-radius:999px;background:#fff0e9;color:#9e4138;text-decoration:none;font:850 14px var(--hand)}
+.footer-contact strong{font-size:16px}
+.footer-small{font-size:10px;color:#958477;margin-top:8px}
+.overlay{position:fixed;inset:0;z-index:20;background:#32221766;backdrop-filter:blur(3px);display:grid;place-items:end center;padding:14px}
+.drawer{width:min(580px,100%);max-height:88vh;overflow:auto;border:2px dashed #e3bb8b;border-radius:25px;background:#fffdf7;padding:22px;box-shadow:0 22px 70px #34241750}
+.drawer-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.drawer h2{font:900 24px var(--hand);margin:0 0 4px}
+.drawer .muted{font-size:12px;color:#847366;margin:0}
+.close{width:34px;height:34px;border:0;border-radius:50%;background:#f3eadc;color:#695544;font-size:19px}
+.cart-line{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:12px;padding:13px 0;border-bottom:1px dashed #ead9c2}
+.cart-line small{display:block;color:#8c7b6c;font-size:10px;margin-top:2px}
+.qty{display:flex;align-items:center;gap:7px}
+.qty button{width:28px;height:28px;border:1px solid #ead7bc;border-radius:9px;background:#fff5e8;color:#6d5140;font-size:16px}
+.total{display:flex;justify-content:space-between;padding:16px 0;font-size:17px;font-weight:900}
+.note-label{display:block;color:#786a5c;font-size:11px;margin:10px 0 6px}
+.note{width:100%;padding:11px 12px;border:1px solid #ead7bc;border-radius:12px;background:#fffefa;outline-color:#ec9169;color:#38271d}
+.submit{width:100%;margin-top:15px;border:0;border-radius:14px;padding:14px;background:linear-gradient(100deg,#ee633e,#f27a48);color:#fff;font-weight:900;box-shadow:0 5px 13px #e65d433b}
+.submit:hover{filter:brightness(1.04)}
+.drawer-foot{margin:10px 0 0;text-align:center;color:#8e7f70;font-size:10px}
+.toast{position:fixed;right:18px;top:88px;z-index:30;max-width:min(380px,calc(100vw - 36px));padding:13px 17px;border:1px solid #f1c19f;border-radius:15px;background:#fff8eb;color:#8d4231;font-weight:800;box-shadow:var(--shadow);animation:toast-in .2s ease}
+@keyframes toast-in{from{transform:translateY(-7px);opacity:0}to{transform:none;opacity:1}}
+.hidden{display:none!important}
+@media(max-width:850px){.menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr .85fr}.food-art{height:auto;aspect-ratio:1/1}}
+@media(max-width:580px){
+  .shell{padding:9px 12px 150px}.topbar{height:58px;top:6px;padding:0 9px;border-radius:19px}.brand{gap:7px;font-size:13px}.brand-mark{width:36px;height:36px;font-size:21px;border-radius:13px}.brand small{font-size:8px}.nav{gap:1px}.nav button{padding:8px 10px;font-size:10px}
+  .hero{grid-template-columns:1fr;gap:13px;margin:17px 0;padding:18px;border-radius:24px}.hero-copy{padding:2px}.hero h1{font-size:31px;margin:10px 0 8px}.hero-copy p{font-size:13px}.hero-meta{gap:6px;margin-top:13px}.table-badge,.demo-badge,.hero-call{font-size:10px;padding:7px 9px}.hero-visual img{height:auto;aspect-ratio:4/3;object-fit:contain;border-width:4px;border-radius:18px}.hero-sticker{font-size:10px}
+  .controls{align-items:stretch;flex-direction:column;gap:8px;margin:14px 0 12px}.search-wrap{max-width:none}.search{height:44px}.table-tag{text-align:center;padding:9px}
+  .tabs{gap:8px;margin:12px 0}.tab{flex:1;justify-content:center;padding:10px 8px;font-size:13px}.menu-heading h2{font-size:21px}.menu-heading p{font-size:10px}
+  .menu-grid{gap:9px}.food-card{padding:8px;border-radius:18px}.food-art{height:auto;aspect-ratio:1/1;border-radius:13px}.food-photo{padding:2px}.food-emoji{font-size:56px}.beer-svg{width:72px;height:96px}.food-info{padding:8px 2px 2px}.food-info h3{font-size:13px}.food-info .cn{font-size:9px}.food-info p{font-size:10px;min-height:37px;margin-top:5px}.food-bottom{margin-top:8px}.price{font-size:16px}.price small{font-size:9px}.add{width:34px;height:34px;font-size:23px}.variant{font-size:9px;padding:6px}
+  .cartbar{bottom:8px;width:calc(100vw - 14px);padding:9px 9px 9px 11px;gap:6px;border-radius:18px}.cart-meta{gap:7px}.cart-icon{width:34px;height:34px;border-radius:12px;font-size:18px}.cart-copy strong{font-size:11px}.cart-copy span{font-size:10px}.cart-actions{gap:5px}.cart-button,.call-button{font-size:10px;padding:10px 9px;border-radius:12px}.call-button{gap:4px}
+  .section{padding:14px}.stats{gap:7px}.stat{padding:12px 9px}.stat strong{font-size:20px}.stat span,.stat em{font-size:9px}.alert-panel{align-items:flex-start;flex-direction:column;padding:13px}.alert-button{width:100%}.drawer{padding:18px 15px 23px}.overlay{padding:0}.drawer{border-radius:23px 23px 0 0}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand"><div class="brand-mark">🐯</div><div>NHÀ TIGER<small>MENU GỌI MÓN TẠI BÀN</small></div></div>
+    <nav class="nav" aria-label="Chuyển trang">
+      <button id="navMenu" class="active" onclick="showView('menu')">Menu khách</button>
+      <button id="navAdmin" onclick="showView('admin')">Quản lý đơn</button>
+    </nav>
+  </header>
+
+  <main id="menuView">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><i></i> MENU NHÀ TIGER · 家虎菜单</div>
+        <h1>Món ngon, gọi ngay<br>tại bàn của bạn!</h1>
+        <p>Bánh mì nóng giòn, đồ uống mát lành — chọn món, thêm vào giỏ và gửi đơn cho Nhà Tiger nhé.</p>
+        <div class="hero-meta">
+          <span class="table-badge">🪑 Đang gọi: <strong id="tableName">Bàn 01</strong></span>
+          <span class="demo-badge" id="connectionBadge">Bản xem trước · cần kết nối Supabase để nhận đơn thật</span>
+          <a class="hero-call" href="tel:0328324410">☎ Gọi Vy Hằng</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="./food-hero.png" alt="Bánh mì Lạng Sơn và trà trái cây tươi mát của Nhà Tiger">
+        <span class="hero-sticker">Ngon từ những điều nhỏ nhất ♡</span>
+      </div>
+    </section>
+
+    <div class="controls">
+      <label class="search-wrap"><span class="search-icon">⌕</span><input id="search" class="search" type="search" placeholder="Tìm món bạn thích..." oninput="renderMenu()"></label>
+      <div class="table-tag">Mã bàn: <strong id="tableTag">01</strong> · Quét QR tại bàn</div>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Danh mục menu">
+      <button id="foodTab" class="tab active" role="tab" aria-selected="true" onclick="setCategory('food')"><span>🥖</span> Đồ ăn <small>美食</small></button>
+      <button id="drinkTab" class="tab" role="tab" aria-selected="false" onclick="setCategory('drink')"><span>🥤</span> Đồ uống <small>饮品</small></button>
+    </div>
+    <div class="menu-heading"><h2 id="menuTitle">Đồ ăn Nhà Tiger</h2><p id="itemCount">9 món</p></div>
+    <div class="menu-grid" id="menuGrid"></div>
+  </main>
+
+  <main id="adminView" class="hidden">
+    <section class="hero" style="grid-template-columns:1fr">
+      <div class="hero-copy">
+        <div class="eyebrow"><i></i> NHÀ TIGER · QUẢN LÝ</div>
+        <h1>Đơn hàng hôm nay</h1>
+        <p>Xem món khách đã gọi, số lượng, tổng tiền và cập nhật tình trạng phục vụ.</p>
+      </div>
+    </section>
+    <section id="adminLogin" class="admin-login hidden">
+      <h2>Đăng nhập quản lý</h2>
+      <p>Chỉ tài khoản quản lý của Nhà Tiger mới xem và cập nhật đơn.</p>
+      <input id="adminEmail" type="email" autocomplete="username" placeholder="Email quản lý">
+      <input id="adminPassword" type="password" autocomplete="current-password" placeholder="Mật khẩu">
+      <button onclick="signInAdmin()">Đăng nhập</button>
+      <div id="loginError" class="login-error" aria-live="polite"></div>
+    </section>
+    <div id="adminContent">
+    <div class="admin-user"><span id="adminSignedIn"></span><button onclick="signOutAdmin()">Đăng xuất</button></div>
+    <section class="stats">
+      <div class="stat"><span>Tổng đơn</span><strong id="orderCount">0</strong><em>100 đơn gần nhất</em></div>
+      <div class="stat"><span>Đang xử lý</span><strong id="activeCount">0</strong><em>Chờ nhận hoặc đang làm</em></div>
+      <div class="stat"><span>Tổng tiền đơn</span><strong id="revenue">0đ</strong><em>Tổng giá trị đơn minh họa</em></div>
+    </section>
+    <section class="alert-panel" aria-live="polite">
+      <div class="alert-copy"><strong>Thông báo đơn mới</strong><span id="alertStatus">Bật chuông trên máy quán trước; sau đó mỗi đơn menu nhận được sẽ tự kêu.</span></div>
+      <button id="alertButton" class="alert-button" onclick="toggleAlerts()">🔔 Bật chuông lớn</button>
+    </section>
+    <section class="section">
+      <div class="section-head"><div><h2>Danh sách đơn</h2><p id="ordersHelp">Đơn gửi từ bản mẫu trên cùng trình duyệt sẽ hiện tại đây.</p></div><a class="hero-call" href="tel:0328324410">☎ 0328324410</a></div>
+      <div id="orderList" class="order-list"></div>
+    </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-thanks">🐯 Cảm ơn bạn đã ghé Nhà Tiger — Ngon từ những điều nhỏ nhất ♡</div>
+    <a class="footer-contact" href="tel:0328324410"><span>☎</span> SĐT: <strong>0328324410</strong> <span>· Vy Hằng</span></a>
+    <div id="footerMode" class="footer-small">Menu mẫu · Vui lòng gọi quán nếu cần hỗ trợ đặt món.</div>
+  </footer>
+</div>
+
+<div id="cartbar" class="cartbar hidden">
+  <div class="cart-meta"><div class="cart-icon">🛒</div><div class="cart-copy"><strong id="cartCount">0 món</strong><span id="cartTotal">0đ</span></div></div>
+  <div class="cart-actions"><button class="cart-button" onclick="openCart()">Xem giỏ · gửi đơn</button><a class="call-button" href="tel:0328324410">☎ Gọi nhân viên</a></div>
+</div>
+<div id="overlay" class="overlay hidden" onclick="overlayClose(event)"><section id="drawer" class="drawer"></section></div>
+<div id="toasts"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./config.js"></script>
+<script>
+const products=[
+ {id:'banhmi-langson',group:'food',name:'Bánh mì Lạng Sơn',cn:'谅山法棍',desc:'Bánh mì nóng giòn, nhân đậm đà kiểu Lạng Sơn.',price:15000,image:'food/banh-mi-lang-son.jpg'},
+ {id:'banhmi-trung',group:'food',name:'Bánh mì trứng',cn:'鸡蛋法棍',desc:'Trứng thơm nóng cùng bánh mì giòn rụm.',price:15000,image:'food/banh-mi-trung.jpg'},
+ {id:'banhmi-thit-xien',group:'food',name:'Bánh mì thịt xiên nướng',cn:'烤肉串法棍',desc:'Thịt xiên nướng thơm, rau và sốt nhà làm.',price:15000,image:'food/banh-mi-thit-xien.jpg'},
+ {id:'banhmi-full',group:'food',name:'Bánh mì full topping',cn:'全配料法棍',desc:'Đầy đủ topping, no ngon trọn vị.',price:20000,image:'food/banh-mi-full.jpg'},
+ {id:'banhmi-muoiot',group:'food',name:'Bánh mì muối ớt',cn:'辣椒盐法棍',desc:'Vị cay mặn hấp dẫn, chọn cỡ theo ý thích.',price:25000,options:[{name:'Cỡ thường',price:25000},{name:'Cỡ lớn',price:30000}],image:'food/banh-mi-muoi-ot.jpg'},
+ {id:'lapxuong',group:'food',name:'Lạp xưởng',cn:'腊肠',desc:'Nướng nóng thơm, ăn chơi rất hợp.',price:10000,image:'food/lap-xuong.jpg'},
+ {id:'xucxich',group:'food',name:'Xúc xích',cn:'香肠',desc:'Xúc xích nướng nóng, vàng thơm.',price:8000,image:'food/xuc-xich.jpg'},
+ {id:'thit-xien',group:'food',name:'Thịt xiên nướng',cn:'烤肉串',desc:'Thịt xiên nướng thơm lừng trên than.',price:7000,image:'food/thit-xien.jpg'},
+ {id:'canh-ga',group:'food',name:'Cánh gà nướng',cn:'烤鸡翅',desc:'Cánh gà nướng vàng, da giòn thơm.',price:20000,image:'food/canh-ga.jpg'},
+ {id:'tra-chanh',group:'drink',name:'Trà chanh / trà tắc',cn:'柠檬茶 / 金桔茶',desc:'Chua ngọt thanh mát, chọn vị chanh hoặc tắc.',price:10000,options:[{name:'Trà chanh',price:10000},{name:'Trà tắc',price:10000}],image:'drinks/tra-chanh.jpg'},
+ {id:'chanh-nha-dam',group:'drink',name:'Trà chanh nha đam hạt nổ',cn:'柠檬芦荟爆爆珠',desc:'Nha đam giòn mát cùng hạt nổ vui miệng.',price:15000,image:'drinks/chanh-nha-dam.jpg'},
+ {id:'thai-xanh',group:'drink',name:'Trà thái xanh',cn:'泰式绿茶',desc:'Trà xanh thơm béo, uống lạnh thật đã.',price:15000,image:'drinks/thai-xanh.jpg'},
+ {id:'mang-cut',group:'drink',name:'Trà măng cụt',cn:'山竹茶',desc:'Hương măng cụt dịu ngọt, màu sắc bắt mắt.',price:20000,image:'drinks/mang-cut.jpg'},
+ {id:'dao-cam-sa',group:'drink',name:'Trà đào cam sả',cn:'桃子橙香茅茶',desc:'Trà đào thơm dịu, cam tươi và sả.',price:20000,image:'drinks/dao-cam-sa.jpg'},
+ {id:'dua-hau',group:'drink',name:'Nước ép dưa hấu',cn:'西瓜汁',desc:'Dưa hấu tươi ép mát lạnh.',price:20000,image:'drinks/dua-hau.jpg'},
+ {id:'soda',group:'drink',name:'Soda 3 vị',cn:'三种口味苏打',desc:'Mát lạnh, chọn biển xanh, việt quất hoặc cam.',price:20000,options:[{name:'Biển xanh',price:20000},{name:'Việt quất',price:20000},{name:'Cam',price:20000}],image:'drinks/soda.jpg'},
+ {id:'ruou-men-la',group:'drink',name:'Rượu men lá Lạng Sơn',cn:'谅山草叶酒',desc:'Rượu men lá đặc sản Lạng Sơn.',price:40000,unit:'/ lít',image:'drinks/ruou-men-la.jpg'},
+ {id:'nuoc-ngot',group:'drink',name:'Nước ngọt các loại',cn:'各类汽水',desc:'Chọn loại nước ngọt có sẵn tại quán.',price:10000,unit:'/ lon',image:'drinks/nuoc-ngot.jpg'},
+ {id:'bia-hanoi',group:'drink',name:'Bia Hà Nội',cn:'河内啤酒',desc:'Bia mát lạnh, chọn chai hoặc lon.',price:15000,unit:'/ chai hoặc lon',image:'drinks/bia-hanoi.jpg'},
+ {id:'bia-saigon',group:'drink',name:'Bia Sài Gòn',cn:'西贡啤酒',desc:'Bia mát lạnh, chọn chai hoặc lon.',price:15000,unit:'/ chai hoặc lon',image:'drinks/bia-saigon.jpg'}
+];
+let activeGroup='food',cart={},soundEnabled=false,audioContext=null,knownOrderIds=new Set();
+const cfg=window.NHATIGER_CONFIG||{};
+const supabaseReady=!!(window.supabase&&cfg.supabaseUrl&&cfg.supabasePublishableKey);
+const supabaseClient=supabaseReady?window.supabase.createClient(cfg.supabaseUrl,cfg.supabasePublishableKey):null;
+let adminSession=null,realtimeChannel=null,remoteOrders=[];
+let table=new URLSearchParams(location.search).get('table')||'01';
+if(/^\d+$/.test(table))table=table.padStart(2,'0');
+document.getElementById('tableName').textContent='Bàn '+table;
+document.getElementById('tableTag').textContent=table;
+
+function money(n){return new Intl.NumberFormat('vi-VN').format(n)+'đ'}
+function shortPrice(n){return Math.round(n/1000)+'k'}
+function beerCan(kind){
+  const h=kind==='hanoi',id=h?'hanoi':'saigon';
+  const body=h?'#f4c83c':'#f7f4ee',edge=h?'#d84336':'#d84336',label=h?'HÀ NỘI':'SAIGON';
+  return '<svg class="beer-svg" viewBox="0 0 120 140" role="img" aria-label="Lon bia '+(h?'Hà Nội':'Sài Gòn')+' phong cách hoạt hình">'+
+    '<defs><linearGradient id="can-'+id+'" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fff" offset="0"/><stop stop-color="'+body+'" offset=".45"/><stop stop-color="'+(h?'#dfaa28':'#d9d5ce')+'" offset="1"/></linearGradient></defs>'+
+    '<ellipse cx="60" cy="128" rx="29" ry="6" fill="#8e65421e"/><path d="M40 19 Q40 14 46 14 H74 Q80 14 80 19 L86 111 Q86 121 76 123 H44 Q34 121 34 111 Z" fill="url(#can-'+id+')" stroke="#b7a58e" stroke-width="2"/>'+
+    '<ellipse cx="60" cy="19" rx="20" ry="5" fill="#d8d7d3" stroke="#a99f93" stroke-width="2"/><path d="M53 18 q7 -4 13 0 q-2 5 -7 4 q-4 0 -6 -4" fill="#99948b"/>'+
+    (h?'<path d="M37 39 H83 L84 59 H36 Z" fill="#cf3d32"/><path d="M37 88 H84 L85 102 H35 Z" fill="#d94736"/><text x="60" y="53" text-anchor="middle" fill="#fff8df" font-size="9" font-weight="900" font-family="Arial">HÀ NỘI</text><text x="60" y="77" text-anchor="middle" fill="#b53d2d" font-size="9" font-weight="900" font-family="Arial">BEER</text><path d="M60 61 l4 5 -4 7 -4 -7z" fill="#d44332"/>':
+      '<path d="M36 39 Q60 45 84 38 L85 52 Q60 59 36 52 Z" fill="#cf3d32"/><path d="M36 91 Q60 84 84 92 L85 105 Q60 98 35 105 Z" fill="#cf3d32"/><text x="60" y="69" text-anchor="middle" fill="#c93d34" font-size="9" font-weight="900" font-family="Arial">SAIGON</text><path d="M60 57 C52 62 68 65 58 72 C50 77 69 78 60 85 M55 62 l-5 -3 M64 74 l6 -3 M57 81 l-5 4" fill="none" stroke="#cf463b" stroke-width="2.5" stroke-linecap="round"/><circle cx="59" cy="61" r="2" fill="#cf463b"/>')+
+    '<path d="M44 28 Q40 62 44 108" fill="none" stroke="#fff" stroke-opacity=".68" stroke-width="4" stroke-linecap="round"/><path d="M43 122 h34" stroke="#aaa094" stroke-width="2"/><circle cx="40" cy="30" r="2" fill="#fff8"/></svg>';
+}
+function getItem(id){return products.find(function(p){return p.id===id})}
+function getVariant(item,index){return item.options?item.options[index]:null}
+function getCartLines(){
+  return Object.keys(cart).map(function(key){
+    const split=key.split('|'),item=getItem(split[0]),index=Number(split[1]||0),variant=getVariant(item,index);
+    return {key:key,item:item,index:index,variant:variant,qty:cart[key],price:variant?variant.price:item.price};
+  }).filter(function(line){return line.item&&line.qty>0})
+}
+function cartCount(){return getCartLines().reduce(function(total,line){return total+line.qty},0)}
+function cartTotal(){return getCartLines().reduce(function(total,line){return total+line.price*line.qty},0)}
+function setCategory(group){
+  activeGroup=group;
+  document.getElementById('foodTab').classList.toggle('active',group==='food');
+  document.getElementById('drinkTab').classList.toggle('active',group==='drink');
+  document.getElementById('foodTab').setAttribute('aria-selected',group==='food');
+  document.getElementById('drinkTab').setAttribute('aria-selected',group==='drink');
+  document.getElementById('menuTitle').textContent=group==='food'?'Đồ ăn Nhà Tiger':'Đồ uống Nhà Tiger';
+  renderMenu();
+}
+function renderMenu(){
+  const query=document.getElementById('search').value.trim().toLocaleLowerCase('vi');
+  const items=products.filter(function(item){
+    return item.group===activeGroup&&(!query||(item.name+' '+item.cn+' '+item.desc).toLocaleLowerCase('vi').includes(query));
+  });
+  document.getElementById('itemCount').textContent=items.length+' món';
+  document.getElementById('menuGrid').innerHTML=items.length?items.map(function(item){
+    const priceText=item.options?item.options.map(function(v){return shortPrice(v.price)}).filter(function(v,i,a){return a.indexOf(v)===i}).join(' / '):shortPrice(item.price);
+    const art=item.image?'<img class="food-photo" src="'+item.image+'" alt="'+item.name+'" loading="lazy">':item.beer?beerCan(item.beer):'<span class="food-emoji" aria-hidden="true">'+item.art+'</span>';
+    const variant=item.options?'<select class="variant" id="variant-'+item.id+'" aria-label="Chọn loại '+item.name+'">'+item.options.map(function(v,i){return '<option value="'+i+'">'+v.name+' · '+shortPrice(v.price)+'</option>'}).join('')+'</select>':'';
+    return '<article class="food-card"><div class="food-art">'+art+'</div><div class="food-info"><div class="food-title-row"><div><h3>'+item.name+'</h3><span class="cn">'+item.cn+'</span></div></div><p>'+item.desc+'</p>'+variant+'<div class="food-bottom"><div class="price">'+priceText+'<small>'+(item.unit||'')+'</small></div><button class="add" aria-label="Thêm '+item.name+'" onclick="addCart(\''+item.id+'\')">+</button></div></div></article>';
+  }).join(''):'<div class="empty">Không tìm thấy món phù hợp. Thử tìm tên món khác nhé.</div>';
+}
+function updateCart(){
+  const count=cartCount();
+  document.getElementById('cartbar').classList.toggle('hidden',count===0||!document.getElementById('adminView').classList.contains('hidden'));
+  document.getElementById('cartCount').textContent=count+' món trong giỏ';
+  document.getElementById('cartTotal').textContent='Tổng: '+money(cartTotal());
+}
+function addCart(id){
+  const item=getItem(id),select=document.getElementById('variant-'+id);
+  const variantIndex=select?Number(select.value):0,key=id+'|'+variantIndex;
+  cart[key]=(cart[key]||0)+1;updateCart();
+  const button=Array.from(document.querySelectorAll('.add')).find(function(el){return el.getAttribute('onclick')==='addCart(\''+id+'\')'});
+  if(button){button.classList.remove('bounce');void button.offsetWidth;button.classList.add('bounce');setTimeout(function(){button.classList.remove('bounce')},400)}
+  const bar=document.getElementById('cartbar');bar.classList.remove('bump');void bar.offsetWidth;bar.classList.add('bump');setTimeout(function(){bar.classList.remove('bump')},380);
+  toast('Đã thêm '+item.name+' vào giỏ');
+}
+function openCart(){
+  const lines=getCartLines();
+  document.getElementById('drawer').innerHTML='<div class="drawer-head"><div><div class="eyebrow"><i></i> BÀN '+table+'</div><h2>Giỏ món Nhà Tiger</h2><p class="muted">Kiểm tra số lượng trước khi gửi đơn cho quán.</p></div><button class="close" aria-label="Đóng" onclick="closeCart()">×</button></div>'+
+    lines.map(function(line){
+      const title=line.item.name+(line.variant?' · '+line.variant.name:'');
+      return '<div class="cart-line"><div><b>'+title+'</b><small>'+money(line.price)+' / món</small></div><div class="qty"><button aria-label="Giảm" onclick="changeQty(\''+line.key+'\',-1)">−</button><b>'+line.qty+'</b><button aria-label="Tăng" onclick="changeQty(\''+line.key+'\',1)">+</button></div><b>'+money(line.price*line.qty)+'</b></div>';
+    }).join('')+
+    '<label class="note-label" for="orderNote">Ghi chú cho quán</label><input id="orderNote" class="note" placeholder="Ví dụ: ít đá, không hành..."><div class="total"><span>Tổng cộng</span><span>'+money(cartTotal())+'</span></div><button class="submit" onclick="submitOrder()">Gửi đơn cho quán · '+money(cartTotal())+'</button><p class="drawer-foot">'+(supabaseClient?'Đơn sẽ được gửi trực tiếp tới trang quản lý của quán.':'Bản xem trước chỉ lưu đơn trên thiết bị này; cần cấu hình Supabase để quán nhận đơn từ xa.')+'</p>';
+  document.getElementById('overlay').classList.remove('hidden');
+}
+function changeQty(key,delta){
+  cart[key]=(cart[key]||0)+delta;if(cart[key]<=0)delete cart[key];updateCart();
+  if(cartCount())openCart();else closeCart();
+}
+function closeCart(){document.getElementById('overlay').classList.add('hidden')}
+function overlayClose(event){if(event.target.id==='overlay')closeCart()}
+function readOrders(){if(supabaseClient)return remoteOrders;try{return JSON.parse(localStorage.getItem('nhatigerOrders')||'[]')}catch(e){return []}}
+function saveOrders(orders){if(supabaseClient){remoteOrders=orders;return}localStorage.setItem('nhatigerOrders',JSON.stringify(orders))}
+function rowToOrder(row){return {id:row.id,table:'Bàn '+row.table_code,tableCode:row.table_code,lines:Array.isArray(row.items)?row.items:[],total:Number(row.total||0),note:row.note||'',status:row.status||'Mới',time:new Date(row.created_at).toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'})}}
+function showAdminAccess(){
+  const login=document.getElementById('adminLogin'),content=document.getElementById('adminContent');
+  document.querySelector('.admin-user').classList.toggle('hidden',!supabaseClient);
+  if(!supabaseClient){login.classList.add('hidden');content.classList.remove('hidden');return}
+  const signedIn=!!adminSession;login.classList.toggle('hidden',signedIn);content.classList.toggle('hidden',!signedIn);
+  document.getElementById('adminSignedIn').textContent=signedIn?'Đang đăng nhập: '+(adminSession.user.email||'quản lý'):'';
+}
+async function signInAdmin(){
+  if(!supabaseClient)return;
+  const email=document.getElementById('adminEmail').value.trim(),password=document.getElementById('adminPassword').value;
+  const errorNode=document.getElementById('loginError');errorNode.textContent='';
+  const {data,error}=await supabaseClient.auth.signInWithPassword({email:email,password:password});
+  if(error){errorNode.textContent='Không đăng nhập được. Kiểm tra email và mật khẩu.';return}
+  adminSession=data.session;showAdminAccess();
+}
+async function signOutAdmin(){
+  if(!supabaseClient)return;if(realtimeChannel){await supabaseClient.removeChannel(realtimeChannel);realtimeChannel=null}await supabaseClient.auth.signOut();adminSession=null;remoteOrders=[];showAdminAccess();renderOrders();
+}
+async function loadRemoteOrders(){
+  if(!supabaseClient||!adminSession)return;
+  const {data,error}=await supabaseClient.from('orders').select('id,table_code,items,total,note,status,created_at').order('created_at',{ascending:false}).limit(100);
+  if(error){toast('Không tải được đơn. Kiểm tra SQL và quyền Supabase.');return}
+  remoteOrders=(data||[]).map(rowToOrder);remoteOrders.forEach(function(order){knownOrderIds.add(order.id)});renderOrders();
+}
+function subscribeToOrders(){
+  if(!supabaseClient||!adminSession)return;
+  if(realtimeChannel)supabaseClient.removeChannel(realtimeChannel);
+  realtimeChannel=supabaseClient.channel('nhatiger-orders').on('postgres_changes',{event:'INSERT',schema:'public',table:'orders'},function(payload){handleIncomingOrder(rowToOrder(payload.new))}).on('postgres_changes',{event:'UPDATE',schema:'public',table:'orders'},function(payload){
+    const updated=rowToOrder(payload.new),index=remoteOrders.findIndex(function(order){return order.id===updated.id});
+    if(index>=0)remoteOrders[index]=updated;else remoteOrders.unshift(updated);renderOrders();
+  }).subscribe();
+}
+async function initializeSupabase(){
+  if(!supabaseClient){document.getElementById('connectionBadge').textContent='Bản xem trước · chưa cấu hình nhận đơn liên thiết bị';document.getElementById('footerMode').textContent='Menu xem trước · gửi đơn từ thiết bị khác cần cấu hình Supabase.';return}
+  document.getElementById('connectionBadge').textContent='Menu gọi món trực tuyến · đơn đồng bộ với quán';
+  document.getElementById('ordersHelp').textContent='Đơn từ các bàn sẽ cập nhật trực tiếp khi trang quản lý đang mở.';
+  document.getElementById('footerMode').textContent='Menu gọi món Nhà Tiger · đơn được gửi trực tiếp tới quán.';
+  showAdminAccess();
+  const {data}=await supabaseClient.auth.getSession();adminSession=data.session;
+  showAdminAccess();
+  if(adminSession){subscribeToOrders();await loadRemoteOrders()}
+  supabaseClient.auth.onAuthStateChange(function(_event,session){
+    setTimeout(async function(){adminSession=session;showAdminAccess();if(session){subscribeToOrders();await loadRemoteOrders()}else{if(realtimeChannel){await supabaseClient.removeChannel(realtimeChannel);realtimeChannel=null}remoteOrders=[];renderOrders()}},0);
+  });
+}
+function updateAlertUI(){
+  const button=document.getElementById('alertButton'),status=document.getElementById('alertStatus');if(!button||!status)return;
+  button.classList.toggle('enabled',soundEnabled);button.textContent=soundEnabled?'🔕 Tắt chuông':'🔔 Bật chuông lớn';
+  if(soundEnabled){const notice=('Notification'in window&&Notification.permission==='granted')?'Thông báo màn hình cũng đã bật.':'Có thể cho phép thông báo màn hình trong cài đặt trình duyệt.';status.textContent='Sẵn sàng: mỗi đơn mới trang nhận được sẽ tự phát chuông. '+notice}
+  else status.textContent='Bật chuông trên máy quán trước; sau đó mỗi đơn menu nhận được sẽ tự kêu.';
+}
+function playOrderChime(){
+  if(!soundEnabled||!audioContext)return;
+  const now=audioContext.currentTime,notes=[880,1174,880,880,1174,880];
+  notes.forEach(function(freq,index){
+    const start=now+index*.24,osc=audioContext.createOscillator(),gain=audioContext.createGain();
+    osc.type='sine';osc.frequency.setValueAtTime(freq,start);gain.gain.setValueAtTime(.0001,start);gain.gain.exponentialRampToValueAtTime(.82,start+.025);gain.gain.exponentialRampToValueAtTime(.0001,start+.205);
+    osc.connect(gain);gain.connect(audioContext.destination);osc.start(start);osc.stop(start+.22);
+  });
+  if(navigator.vibrate)navigator.vibrate([250,90,250,90,450]);
+}
+async function toggleAlerts(){
+  if(soundEnabled){soundEnabled=false;updateAlertUI();toast('Đã tắt chuông báo đơn');return}
+  let permissionRequest=Promise.resolve('unsupported');
+  try{if('Notification'in window&&Notification.permission==='default')permissionRequest=Notification.requestPermission()}catch(error){}
+  try{const AudioContextClass=window.AudioContext||window.webkitAudioContext;if(AudioContextClass){audioContext=audioContext||new AudioContextClass();await audioContext.resume();soundEnabled=audioContext.state==='running'}}catch(error){soundEnabled=false}
+  try{await permissionRequest}catch(error){}updateAlertUI();
+  if(soundEnabled){playOrderChime();toast('Đã bật chuông báo đơn trên thiết bị này')}
+  else toast('Trình duyệt chưa cho phép phát chuông. Hãy thử mở trang bằng Chrome hoặc Safari.');
+}
+function notifyNewOrder(order){
+  playOrderChime();
+  if('Notification'in window&&Notification.permission==='granted'){
+    const detail=order.lines.map(function(line){return line.qty+' × '+line.name}).join(', ');
+    try{const notice=new Notification('Đơn mới Nhà Tiger · '+order.table,{body:detail+' · '+money(order.total),tag:order.id,requireInteraction:true});notice.onclick=function(){window.focus();showView('admin')}}catch(error){}
+  }
+  toast('🔔 Có đơn mới · '+order.table+' · '+money(order.total));
+}
+function handleIncomingOrder(order){
+  if(!order||!order.id||knownOrderIds.has(order.id))return;
+  knownOrderIds.add(order.id);notifyNewOrder(order);renderOrders();
+}
+async function submitOrder(){
+  const lines=getCartLines();if(!lines.length)return;
+  const items=lines.map(function(line){return {name:line.item.name+(line.variant?' · '+line.variant.name:''),qty:line.qty,price:line.price}});
+  const note=document.getElementById('orderNote').value.trim(),total=cartTotal();
+  if(supabaseClient){
+    const {error}=await supabaseClient.from('orders').insert({table_code:table,items:items,total:total,note:note,status:'Mới'});
+    if(error){toast('Chưa gửi được đơn. Kiểm tra kết nối mạng rồi thử lại.');return}
+  }else{
+    const order={id:'NT-'+String(Date.now()).slice(-6),table:'Bàn '+table,lines:items,total:total,note:note,status:'Mới',time:new Date().toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'})};
+    const orders=readOrders();orders.unshift(order);saveOrders(orders)
+  }
+  cart={};closeCart();updateCart();renderOrders();toast('Đã gửi đơn tới Nhà Tiger');
+}
+function renderOrders(){
+  if(supabaseClient&&!adminSession){document.getElementById('orderList').innerHTML='<div class="empty-orders">Đăng nhập tài khoản quản lý để xem đơn.</div>';document.getElementById('orderCount').textContent='0';document.getElementById('activeCount').textContent='0';document.getElementById('revenue').textContent='0đ';return}
+  const orders=readOrders();
+  const active=orders.filter(function(o){return o.status!=='Đã xong'}).length;
+  const revenue=orders.reduce(function(sum,o){return sum+(o.total||0)},0);
+  document.getElementById('orderCount').textContent=orders.length;
+  document.getElementById('activeCount').textContent=active;
+  document.getElementById('revenue').textContent=money(revenue);
+  document.getElementById('orderList').innerHTML=orders.length?orders.map(function(order,index){
+    const badgeClass=order.status==='Đang làm'?'prep':order.status==='Đã xong'?'done':'';
+    const next=order.status==='Mới'?'Đang làm':order.status==='Đang làm'?'Đã xong':'';
+    const lines=order.lines.map(function(line){return escapeHTML(line.qty+' × '+line.name)}).join('<br>');
+    return '<article class="order-card"><div class="order-top"><div><div class="order-id">'+escapeHTML(order.id)+' · '+escapeHTML(order.table)+'</div><div class="order-time">'+escapeHTML(order.time)+' · Thanh toán tại quầy</div></div><span class="badge '+badgeClass+'">'+escapeHTML(order.status)+'</span></div><div class="order-items">'+lines+(order.note?'<br><b>Ghi chú:</b> '+escapeHTML(order.note):'')+'</div><div class="order-bottom"><strong>'+money(order.total)+'</strong>'+(next?'<button class="mini" onclick="setOrderStatus('+index+',\''+next+'\')">'+(next==='Đang làm'?'Nhận đơn':'Đánh dấu xong')+'</button>':'<span class="footer-small">Đã phục vụ</span>')+'</div></article>';
+  }).join(''):'<div class="empty-orders">Chưa có đơn hàng nào.<br>Đơn tạo trong bản mẫu trên trình duyệt này sẽ hiện ở đây.</div>';
+}
+function escapeHTML(value){return String(value).replace(/[&<>"']/g,function(char){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]})}
+async function setOrderStatus(index,status){const orders=readOrders();if(!orders[index])return;
+  if(supabaseClient){const {error}=await supabaseClient.from('orders').update({status:status}).eq('id',orders[index].id);if(error){toast('Chưa cập nhật được trạng thái đơn.');return}}
+  orders[index].status=status;saveOrders(orders);renderOrders();toast('Đã cập nhật: '+status)}
+function showView(view){
+  const isMenu=view==='menu';document.getElementById('menuView').classList.toggle('hidden',!isMenu);document.getElementById('adminView').classList.toggle('hidden',isMenu);
+  document.getElementById('navMenu').classList.toggle('active',isMenu);document.getElementById('navAdmin').classList.toggle('active',!isMenu);
+  if(!isMenu)renderOrders();updateCart();
+}
+function toast(message){
+  const node=document.createElement('div');node.className='toast';node.textContent=message;document.getElementById('toasts').appendChild(node);setTimeout(function(){node.remove()},3000);
+}
+window.addEventListener('storage',function(event){
+  if(event.key!=='nhatigerOrders'||!event.newValue)return;
+  try{const incoming=JSON.parse(event.newValue);incoming.forEach(function(order){handleIncomingOrder(order)})}catch(error){}
+});
+if(!supabaseClient)readOrders().forEach(function(order){if(order.id)knownOrderIds.add(order.id)});
+showAdminAccess();updateAlertUI();
+renderMenu();updateCart();renderOrders();initializeSupabase();
+</script>
+</body>
+</html>
