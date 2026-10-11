@@ -35,6 +35,8 @@ h1{font:900 clamp(30px,4vw,46px)/1.06 var(--hand);letter-spacing:-.04em;margin:1
 .demo-badge{background:#fff9edb8;border:1px solid #f0d7b5;color:#876947}
 .hero-call{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:9px 13px;background:#fff7eb;color:#ab4937;text-decoration:none;font-size:12px;font-weight:850;border:1px solid #f1c5a7}
 .hero-call:hover{background:white}
+.customer-orders-link{display:inline-flex;align-items:center;gap:6px;border:1px solid #efbea0;border-radius:999px;padding:8px 12px;background:#fff;color:#a94734;font-size:12px;font-weight:850;box-shadow:0 4px 12px #73532a0b}
+.customer-orders-link:hover{background:#fff4e9;transform:translateY(-1px)}
 .hero-visual{position:relative;min-width:0}
 .hero-visual img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;object-position:center;background:#fffaf1;border:5px solid #fffdf7;border-radius:23px;box-shadow:0 12px 28px #79452128}
 .hero-sticker{position:absolute;right:12px;top:12px;background:#fffdf4;color:#9c492d;padding:7px 11px;border:1px dashed #e7aa75;border-radius:15px;font:800 12px var(--hand);transform:rotate(4deg)}
@@ -83,6 +85,7 @@ h1{font:900 clamp(30px,4vw,46px)/1.06 var(--hand);letter-spacing:-.04em;margin:1
 .cart-button,.call-button{border:0;border-radius:14px;padding:12px 16px;font-size:13px;font-weight:900;white-space:nowrap;transition:transform .16s,background .16s}
 .cart-button{background:#fffdf7;color:#c5483e;box-shadow:0 4px 12px #9c38331c}
 .cart-button:hover{background:#fff2e7;transform:translateY(-1px)}
+.cart-button:disabled{opacity:.78;cursor:default;transform:none}
 .call-button{display:inline-flex;align-items:center;gap:7px;background:#bd3e38;color:white;border:1px solid #ffb09a;text-decoration:none}
 .call-button:hover{background:#a93430}
 .cartbar.bump{animation:cart-pop .34s ease}
@@ -120,6 +123,17 @@ h1{font:900 clamp(30px,4vw,46px)/1.06 var(--hand);letter-spacing:-.04em;margin:1
 .order-bottom{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #eee1ce;padding-top:10px}
 .order-bottom strong{color:var(--orange-dark)}
 .mini{border:1px solid #edc9a1;background:#fff7eb;border-radius:10px;padding:7px 10px;color:#98543d;font-size:11px;font-weight:800}
+.customer-order{padding:15px;margin-top:12px;border:1px dashed #e7c99f;border-radius:18px;background:#fffaf1}
+.customer-order.processing{animation:order-pulse 1.8s ease-in-out infinite;border-color:#70b77b;background:#f1fff1}
+.customer-order.done{border-color:#a5d2a5;background:#f4fff2}
+.customer-order-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.customer-order-title{font-weight:900}.customer-order-time{font-size:11px;color:#897969;margin-top:3px}
+.customer-order-lines{margin:12px 0;color:#67594d;font-size:12px;line-height:1.7}
+.customer-status-banner{margin-top:12px;padding:12px;border-radius:14px;background:#fff0d2;color:#86580d;font-size:13px;font-weight:850}
+.customer-status-banner.processing{background:#e9f8e8;color:#256b35}
+.customer-status-banner.done{background:#e7f5e9;color:#397549}
+.customer-total{display:flex;justify-content:space-between;border-top:1px solid #eee1ce;padding-top:10px;font-weight:900;color:var(--orange-dark)}
+@keyframes order-pulse{0%,100%{box-shadow:0 0 0 0 #60a96b00}50%{box-shadow:0 0 0 5px #60a96b20}}
 .empty-orders{text-align:center;padding:32px 12px;color:#887a6d}
 .footer{margin:35px auto 0;text-align:center}
 .footer-thanks{font:850 14px var(--hand);color:#71563d;margin-bottom:10px}
@@ -136,6 +150,7 @@ h1{font:900 clamp(30px,4vw,46px)/1.06 var(--hand);letter-spacing:-.04em;margin:1
 .cart-line small{display:block;color:#8c7b6c;font-size:10px;margin-top:2px}
 .qty{display:flex;align-items:center;gap:7px}
 .qty button{width:28px;height:28px;border:1px solid #ead7bc;border-radius:9px;background:#fff5e8;color:#6d5140;font-size:16px}
+.table-input{width:100%;height:44px;padding:0 12px;border:1px solid #ead7bc;border-radius:12px;background:#fffefa;outline-color:#ec9169;color:#38271d;font-weight:800}
 .total{display:flex;justify-content:space-between;padding:16px 0;font-size:17px;font-weight:900}
 .note-label{display:block;color:#786a5c;font-size:11px;margin:10px 0 6px}
 .note{width:100%;padding:11px 12px;border:1px solid #ead7bc;border-radius:12px;background:#fffefa;outline-color:#ec9169;color:#38271d}
@@ -148,7 +163,7 @@ h1{font:900 clamp(30px,4vw,46px)/1.06 var(--hand);letter-spacing:-.04em;margin:1
 @media(max-width:850px){.menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr .85fr}.food-art{height:auto;aspect-ratio:1/1}}
 @media(max-width:580px){
   .shell{padding:9px 12px 150px}.topbar{height:58px;top:6px;padding:0 9px;border-radius:19px}.brand{gap:7px;font-size:13px}.brand-mark{width:36px;height:36px;font-size:21px;border-radius:13px}.brand small{font-size:8px}.nav{gap:1px}.nav button{padding:8px 10px;font-size:10px}
-  .hero{grid-template-columns:1fr;gap:13px;margin:17px 0;padding:18px;border-radius:24px}.hero-copy{padding:2px}.hero h1{font-size:31px;margin:10px 0 8px}.hero-copy p{font-size:13px}.hero-meta{gap:6px;margin-top:13px}.table-badge,.demo-badge,.hero-call{font-size:10px;padding:7px 9px}.hero-visual img{height:auto;aspect-ratio:4/3;object-fit:contain;border-width:4px;border-radius:18px}.hero-sticker{font-size:10px}
+  .hero{grid-template-columns:1fr;gap:13px;margin:17px 0;padding:18px;border-radius:24px}.hero-copy{padding:2px}.hero h1{font-size:31px;margin:10px 0 8px}.hero-copy p{font-size:13px}.hero-meta{gap:6px;margin-top:13px}.table-badge,.demo-badge,.hero-call,.customer-orders-link{font-size:10px;padding:7px 9px}.hero-visual img{height:auto;aspect-ratio:4/3;object-fit:contain;border-width:4px;border-radius:18px}.hero-sticker{font-size:10px}
   .controls{align-items:stretch;flex-direction:column;gap:8px;margin:14px 0 12px}.search-wrap{max-width:none}.search{height:44px}.table-tag{text-align:center;padding:9px}
   .tabs{gap:8px;margin:12px 0}.tab{flex:1;justify-content:center;padding:10px 8px;font-size:13px}.menu-heading h2{font-size:21px}.menu-heading p{font-size:10px}
   .menu-grid{gap:9px}.food-card{padding:8px;border-radius:18px}.food-art{height:auto;aspect-ratio:1/1;border-radius:13px}.food-photo{padding:2px}.food-emoji{font-size:56px}.beer-svg{width:72px;height:96px}.food-info{padding:8px 2px 2px}.food-info h3{font-size:13px}.food-info .cn{font-size:9px}.food-info p{font-size:10px;min-height:37px;margin-top:5px}.food-bottom{margin-top:8px}.price{font-size:16px}.price small{font-size:9px}.add{width:34px;height:34px;font-size:23px}.variant{font-size:9px;padding:6px}
@@ -177,6 +192,7 @@ h1{font:900 clamp(30px,4vw,46px)/1.06 var(--hand);letter-spacing:-.04em;margin:1
         <div class="hero-meta">
           <span class="table-badge">🪑 Đang gọi: <strong id="tableName">Bàn 01</strong></span>
           <span class="demo-badge" id="connectionBadge">Bản xem trước · cần kết nối Supabase để nhận đơn thật</span>
+          <button class="customer-orders-link" onclick="openCustomerOrders()">🧾 Đơn của tôi <span id="customerOrderCount"></span></button>
           <a class="hero-call" href="tel:0328324410">☎ Gọi Vy Hằng</a>
         </div>
       </div>
@@ -272,13 +288,14 @@ const products=[
  {id:'bia-hanoi',group:'drink',name:'Bia Hà Nội',cn:'河内啤酒',desc:'Bia mát lạnh, chọn chai hoặc lon.',price:15000,unit:'/ chai hoặc lon',image:'drinks/bia-hanoi.jpg'},
  {id:'bia-saigon',group:'drink',name:'Bia Sài Gòn',cn:'西贡啤酒',desc:'Bia mát lạnh, chọn chai hoặc lon.',price:15000,unit:'/ chai hoặc lon',image:'drinks/bia-saigon.jpg'}
 ];
-let activeGroup='food',cart={},soundEnabled=false,audioContext=null,knownOrderIds=new Set();
+let activeGroup='food',cart={},soundEnabled=false,audioContext=null,knownOrderIds=new Set(),submittingOrder=false;
 const cfg=window.NHATIGER_CONFIG||{};
 const supabaseReady=!!(window.supabase&&cfg.supabaseUrl&&cfg.supabasePublishableKey);
 const supabaseClient=supabaseReady?window.supabase.createClient(cfg.supabaseUrl,cfg.supabasePublishableKey):null;
-let adminSession=null,realtimeChannel=null,remoteOrders=[];
+let adminSession=null,realtimeChannel=null,remoteOrders=[],customerOrders=loadCustomerOrders(),customerChannels={},customerStatusTimer=null,cartNoteDraft='',cartTableDraft='';
 let table=new URLSearchParams(location.search).get('table')||'01';
-if(/^\d+$/.test(table))table=table.padStart(2,'0');
+if(!/^\d{1,3}$/.test(table))table='01';
+table=table.padStart(2,'0');cartTableDraft=table;
 document.getElementById('tableName').textContent='Bàn '+table;
 document.getElementById('tableTag').textContent=table;
 
@@ -329,9 +346,10 @@ function renderMenu(){
 }
 function updateCart(){
   const count=cartCount();
-  document.getElementById('cartbar').classList.toggle('hidden',count===0||!document.getElementById('adminView').classList.contains('hidden'));
-  document.getElementById('cartCount').textContent=count+' món trong giỏ';
-  document.getElementById('cartTotal').textContent='Tổng: '+money(cartTotal());
+  document.getElementById('cartbar').classList.toggle('hidden',!document.getElementById('adminView').classList.contains('hidden'));
+  document.getElementById('cartCount').textContent=count+' món';
+  document.getElementById('cartTotal').textContent=money(cartTotal());
+  const button=document.querySelector('.cart-button');if(button){button.disabled=count===0;button.textContent=count?'Xem giỏ · gửi đơn':'Chọn món trước'}
 }
 function addCart(id){
   const item=getItem(id),select=document.getElementById('variant-'+id);
@@ -343,13 +361,18 @@ function addCart(id){
   toast('Đã thêm '+item.name+' vào giỏ');
 }
 function openCart(){
+  const existingNote=document.getElementById('orderNote'),existingTable=document.getElementById('orderTable');
+  if(existingNote)cartNoteDraft=existingNote.value;
+  if(existingTable)cartTableDraft=existingTable.value;
   const lines=getCartLines();
-  document.getElementById('drawer').innerHTML='<div class="drawer-head"><div><div class="eyebrow"><i></i> BÀN '+table+'</div><h2>Giỏ món Nhà Tiger</h2><p class="muted">Kiểm tra số lượng trước khi gửi đơn cho quán.</p></div><button class="close" aria-label="Đóng" onclick="closeCart()">×</button></div>'+
+  const drawer=document.getElementById('drawer');drawer.dataset.view='cart';
+  drawer.innerHTML='<div class="drawer-head"><div><div class="eyebrow"><i></i> ĐẶT MÓN TẠI BÀN</div><h2>Giỏ món Nhà Tiger</h2><p class="muted">Kiểm tra món, số lượng và số bàn trước khi gửi.</p></div><button class="close" aria-label="Đóng" onclick="closeCart()">×</button></div>'+
     lines.map(function(line){
       const title=line.item.name+(line.variant?' · '+line.variant.name:'');
       return '<div class="cart-line"><div><b>'+title+'</b><small>'+money(line.price)+' / món</small></div><div class="qty"><button aria-label="Giảm" onclick="changeQty(\''+line.key+'\',-1)">−</button><b>'+line.qty+'</b><button aria-label="Tăng" onclick="changeQty(\''+line.key+'\',1)">+</button></div><b>'+money(line.price*line.qty)+'</b></div>';
     }).join('')+
-    '<label class="note-label" for="orderNote">Ghi chú cho quán</label><input id="orderNote" class="note" placeholder="Ví dụ: ít đá, không hành..."><div class="total"><span>Tổng cộng</span><span>'+money(cartTotal())+'</span></div><button class="submit" onclick="submitOrder()">Gửi đơn cho quán · '+money(cartTotal())+'</button><p class="drawer-foot">'+(supabaseClient?'Đơn sẽ được gửi trực tiếp tới trang quản lý của quán.':'Bản xem trước chỉ lưu đơn trên thiết bị này; cần cấu hình Supabase để quán nhận đơn từ xa.')+'</p>';
+    '<label class="note-label" for="orderTable">Số bàn</label><input id="orderTable" class="table-input" type="text" inputmode="numeric" maxlength="3" value="'+escapeHTML(cartTableDraft)+'" placeholder="Ví dụ: 01" oninput="cartTableDraft=this.value">'+
+    '<label class="note-label" for="orderNote">Ghi chú cho quán</label><input id="orderNote" class="note" maxlength="500" value="'+escapeHTML(cartNoteDraft)+'" placeholder="Ví dụ: ít đá, không hành..." oninput="cartNoteDraft=this.value"><div class="total"><span>Tổng cộng</span><span>'+money(cartTotal())+'</span></div><button class="submit" onclick="submitOrder()">Gửi đơn hàng · '+money(cartTotal())+'</button><p class="drawer-foot">'+(supabaseClient?'Đơn sẽ được gửi trực tiếp tới trang quản lý của quán.':'Bản xem trước chỉ lưu đơn trên thiết bị này; cần cấu hình Supabase để quán nhận đơn từ xa.')+'</p>';
   document.getElementById('overlay').classList.remove('hidden');
 }
 function changeQty(key,delta){
@@ -360,7 +383,52 @@ function closeCart(){document.getElementById('overlay').classList.add('hidden')}
 function overlayClose(event){if(event.target.id==='overlay')closeCart()}
 function readOrders(){if(supabaseClient)return remoteOrders;try{return JSON.parse(localStorage.getItem('nhatigerOrders')||'[]')}catch(e){return []}}
 function saveOrders(orders){if(supabaseClient){remoteOrders=orders;return}localStorage.setItem('nhatigerOrders',JSON.stringify(orders))}
-function rowToOrder(row){return {id:row.id,table:'Bàn '+row.table_code,tableCode:row.table_code,lines:Array.isArray(row.items)?row.items:[],total:Number(row.total||0),note:row.note||'',status:row.status||'Mới',time:new Date(row.created_at).toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'})}}
+function loadCustomerOrders(){try{const saved=JSON.parse(localStorage.getItem('nhatigerCustomerOrders')||'[]');return Array.isArray(saved)?saved.filter(function(order){return order&&order.id&&Array.isArray(order.lines)}).slice(0,10):[]}catch(error){return []}}
+function saveCustomerOrders(){customerOrders=customerOrders.slice(0,10);localStorage.setItem('nhatigerCustomerOrders',JSON.stringify(customerOrders));renderCustomerOrderCount()}
+function renderCustomerOrderCount(){const node=document.getElementById('customerOrderCount');if(node)node.textContent=customerOrders.length?'('+customerOrders.length+')':''}
+function normalizeStatus(status){if(status==='Mới')return 'new';if(status==='Đang làm')return 'processing';if(status==='Đã xong')return 'done';return ['new','processing','done'].includes(status)?status:'new'}
+function statusLabel(status){return ({new:'Đã gửi · chờ quán nhận',processing:'Quán đang làm món cho bạn',done:'Đơn đã hoàn thành'})[normalizeStatus(status)]}
+function rowToOrder(row){return {id:row.id,table:'Bàn '+row.table_code,tableCode:row.table_code,lines:Array.isArray(row.items)?row.items:[],total:Number(row.total||0),note:row.note||'',status:normalizeStatus(row.status),time:new Date(row.created_at).toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'})}}
+function makeUuid(){if(window.crypto&&typeof window.crypto.randomUUID==='function')return window.crypto.randomUUID();const bytes=new Uint8Array(16);window.crypto.getRandomValues(bytes);bytes[6]=(bytes[6]&15)|64;bytes[8]=(bytes[8]&63)|128;const hex=Array.from(bytes,function(value){return value.toString(16).padStart(2,'0')}).join('');return hex.slice(0,8)+'-'+hex.slice(8,12)+'-'+hex.slice(12,16)+'-'+hex.slice(16,20)+'-'+hex.slice(20)}
+function customerStatusClass(status){return normalizeStatus(status)==='processing'?'processing':normalizeStatus(status)==='done'?'done':''}
+function renderCustomerOrders(){
+  const drawer=document.getElementById('drawer');drawer.dataset.view='customer-orders';
+  const list=customerOrders.map(function(order){
+    const status=normalizeStatus(order.status),klass=customerStatusClass(status);
+    const lines=order.lines.map(function(line){return '<div>'+escapeHTML(line.qty+' × '+line.name)+' <span>· '+money(Number(line.price||0)*Number(line.qty||0))+'</span></div>'}).join('');
+    const reference=String(order.id).slice(-6).toUpperCase();
+    return '<article class="customer-order '+klass+'"><div class="customer-order-top"><div><div class="customer-order-title">'+escapeHTML(order.table||('Bàn '+order.tableCode))+' · Mã '+escapeHTML(reference)+'</div><div class="customer-order-time">Đặt lúc '+escapeHTML(order.time||'vừa xong')+'</div></div><button class="close" aria-label="Đóng" onclick="closeCart()">×</button></div><div class="customer-order-lines">'+lines+(order.note?'<div><b>Ghi chú:</b> '+escapeHTML(order.note)+'</div>':'')+'</div><div class="customer-total"><span>Tổng tiền</span><span>'+money(order.total)+'</span></div><div class="customer-status-banner '+klass+'" aria-live="polite">'+escapeHTML(statusLabel(status))+'</div></article>';
+  }).join('');
+  drawer.innerHTML='<div class="drawer-head"><div><div class="eyebrow"><i></i> THEO DÕI ĐƠN HÀNG</div><h2>Đơn hàng của bạn</h2><p class="muted">Trạng thái sẽ cập nhật khi quán nhận đơn.</p></div><button class="close" aria-label="Đóng" onclick="closeCart()">×</button></div>'+(list||'<div class="empty-orders">Bạn chưa gửi đơn nào. Hãy chọn món trong menu để bắt đầu nhé.</div>')+(supabaseClient?'<p class="drawer-foot">Giữ trang menu đang mở và có kết nối mạng để nhận cập nhật trực tiếp từ quán.</p>':'<p class="drawer-foot">Đây là bản xem trước trên thiết bị này; cần cấu hình Supabase để nhận trạng thái từ xa.</p>');
+}
+function openCustomerOrders(){renderCustomerOrders();document.getElementById('overlay').classList.remove('hidden')}
+function updateCustomerOrderStatus(orderId,status,notify){
+  const order=customerOrders.find(function(item){return item.id===orderId});if(!order)return;
+  const next=normalizeStatus(status),previous=normalizeStatus(order.status);if(previous===next)return;
+  order.status=next;saveCustomerOrders();
+  if(document.getElementById('overlay').classList.contains('hidden')===false&&document.getElementById('drawer').dataset.view==='customer-orders')renderCustomerOrders();
+  if(notify&&next==='processing'){toast('Quán đang làm món cho bạn 🍳');if(navigator.vibrate)navigator.vibrate([180,80,180])}
+  if(notify&&next==='done')toast('Đơn hàng của bạn đã hoàn thành 🎉');
+}
+async function refreshCustomerOrderStatus(order){
+  if(!supabaseClient||!order.customerToken||normalizeStatus(order.status)==='done')return;
+  const {data,error}=await supabaseClient.rpc('get_customer_order_status',{p_order_id:order.id,p_customer_token:order.customerToken});
+  if(!error&&data)updateCustomerOrderStatus(order.id,data,true);
+}
+function startCustomerOrderTracking(order){
+  if(!supabaseClient||!order.customerToken||normalizeStatus(order.status)==='done'||customerChannels[order.id])return;
+  const topic='nhatiger-order:'+order.id+':'+order.customerToken;
+  customerChannels[order.id]=supabaseClient.channel(topic,{config:{private:false}}).on('broadcast',{event:'order_status'},function(message){
+    const payload=message&&message.payload;if(payload&&payload.order_id===order.id)updateCustomerOrderStatus(order.id,payload.status,true);
+  }).subscribe(function(state){if(state==='SUBSCRIBED')refreshCustomerOrderStatus(order)});
+}
+function startCustomerTracking(){
+  if(!supabaseClient)return;
+  customerOrders.forEach(startCustomerOrderTracking);
+  if(customerStatusTimer)clearInterval(customerStatusTimer);
+  customerStatusTimer=setInterval(function(){if(document.visibilityState==='visible')customerOrders.forEach(refreshCustomerOrderStatus)},12000);
+}
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'&&supabaseClient)customerOrders.forEach(refreshCustomerOrderStatus)});
 function showAdminAccess(){
   const login=document.getElementById('adminLogin'),content=document.getElementById('adminContent');
   document.querySelector('.admin-user').classList.toggle('hidden',!supabaseClient);
@@ -398,6 +466,7 @@ async function initializeSupabase(){
   document.getElementById('connectionBadge').textContent='Menu gọi món trực tuyến · đơn đồng bộ với quán';
   document.getElementById('ordersHelp').textContent='Đơn từ các bàn sẽ cập nhật trực tiếp khi trang quản lý đang mở.';
   document.getElementById('footerMode').textContent='Menu gọi món Nhà Tiger · đơn được gửi trực tiếp tới quán.';
+  startCustomerTracking();
   showAdminAccess();
   const {data}=await supabaseClient.auth.getSession();adminSession=data.session;
   showAdminAccess();
@@ -441,40 +510,55 @@ function notifyNewOrder(order){
 }
 function handleIncomingOrder(order){
   if(!order||!order.id||knownOrderIds.has(order.id))return;
-  knownOrderIds.add(order.id);notifyNewOrder(order);renderOrders();
+  knownOrderIds.add(order.id);
+  if(supabaseClient){
+    remoteOrders=remoteOrders.filter(function(existing){return existing.id!==order.id});
+    remoteOrders.unshift(order);
+    remoteOrders=remoteOrders.slice(0,100);
+  }
+  notifyNewOrder(order);renderOrders();
 }
 async function submitOrder(){
   const lines=getCartLines();if(!lines.length)return;
+  if(submittingOrder)return;
+  const tableInput=document.getElementById('orderTable'),noteInput=document.getElementById('orderNote');
+  const enteredTable=(tableInput?tableInput.value:cartTableDraft).trim();
+  if(!/^\d{1,3}$/.test(enteredTable)){toast('Nhập số bàn từ 1 đến 3 chữ số nhé.');if(tableInput)tableInput.focus();return}
+  table=enteredTable.padStart(2,'0');cartTableDraft=table;
+  document.getElementById('tableName').textContent='Bàn '+table;document.getElementById('tableTag').textContent=table;
   const items=lines.map(function(line){return {name:line.item.name+(line.variant?' · '+line.variant.name:''),qty:line.qty,price:line.price}});
-  const note=document.getElementById('orderNote').value.trim(),total=cartTotal();
+  const note=(noteInput?noteInput.value:cartNoteDraft).trim(),total=cartTotal(),orderId=makeUuid(),customerToken=supabaseClient?makeUuid():'';
+  const submitButton=document.querySelector('.submit');submittingOrder=true;if(submitButton){submitButton.disabled=true;submitButton.textContent='Đang gửi đơn…'}
   if(supabaseClient){
-    const {error}=await supabaseClient.from('orders').insert({table_code:table,items:items,total:total,note:note,status:'Mới'});
-    if(error){toast('Chưa gửi được đơn. Kiểm tra kết nối mạng rồi thử lại.');return}
-  }else{
-    const order={id:'NT-'+String(Date.now()).slice(-6),table:'Bàn '+table,lines:items,total:total,note:note,status:'Mới',time:new Date().toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'})};
+    const {error}=await supabaseClient.from('orders').insert({id:orderId,customer_token:customerToken,table_code:table,items:items,total:total,note:note,status:'new'});
+    if(error){submittingOrder=false;if(submitButton){submitButton.disabled=false;submitButton.textContent='Gửi đơn hàng · '+money(total)}toast('Chưa gửi được đơn. Hãy kiểm tra đã chạy tệp nâng cấp Supabase rồi thử lại.');return}
+  }
+  const order={id:supabaseClient?orderId:'NT-'+String(Date.now()).slice(-6),customerToken:customerToken,table:'Bàn '+table,tableCode:table,lines:items,total:total,note:note,status:'new',time:new Date().toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'})};
+  if(!supabaseClient){
     const orders=readOrders();orders.unshift(order);saveOrders(orders)
   }
-  cart={};closeCart();updateCart();renderOrders();toast('Đã gửi đơn tới Nhà Tiger');
+  customerOrders.unshift(order);saveCustomerOrders();startCustomerOrderTracking(order);
+  cart={};cartNoteDraft='';cartTableDraft=table;submittingOrder=false;closeCart();updateCart();renderOrders();openCustomerOrders();toast('Đơn đã gửi tới Nhà Tiger');
 }
 function renderOrders(){
   if(supabaseClient&&!adminSession){document.getElementById('orderList').innerHTML='<div class="empty-orders">Đăng nhập tài khoản quản lý để xem đơn.</div>';document.getElementById('orderCount').textContent='0';document.getElementById('activeCount').textContent='0';document.getElementById('revenue').textContent='0đ';return}
   const orders=readOrders();
-  const active=orders.filter(function(o){return o.status!=='Đã xong'}).length;
+  const active=orders.filter(function(o){return normalizeStatus(o.status)!=='done'}).length;
   const revenue=orders.reduce(function(sum,o){return sum+(o.total||0)},0);
   document.getElementById('orderCount').textContent=orders.length;
   document.getElementById('activeCount').textContent=active;
   document.getElementById('revenue').textContent=money(revenue);
   document.getElementById('orderList').innerHTML=orders.length?orders.map(function(order,index){
-    const badgeClass=order.status==='Đang làm'?'prep':order.status==='Đã xong'?'done':'';
-    const next=order.status==='Mới'?'Đang làm':order.status==='Đang làm'?'Đã xong':'';
+    const status=normalizeStatus(order.status),badgeClass=status==='processing'?'prep':status==='done'?'done':'';
+    const next=status==='new'?'processing':status==='processing'?'done':'';
     const lines=order.lines.map(function(line){return escapeHTML(line.qty+' × '+line.name)}).join('<br>');
-    return '<article class="order-card"><div class="order-top"><div><div class="order-id">'+escapeHTML(order.id)+' · '+escapeHTML(order.table)+'</div><div class="order-time">'+escapeHTML(order.time)+' · Thanh toán tại quầy</div></div><span class="badge '+badgeClass+'">'+escapeHTML(order.status)+'</span></div><div class="order-items">'+lines+(order.note?'<br><b>Ghi chú:</b> '+escapeHTML(order.note):'')+'</div><div class="order-bottom"><strong>'+money(order.total)+'</strong>'+(next?'<button class="mini" onclick="setOrderStatus('+index+',\''+next+'\')">'+(next==='Đang làm'?'Nhận đơn':'Đánh dấu xong')+'</button>':'<span class="footer-small">Đã phục vụ</span>')+'</div></article>';
+    return '<article class="order-card"><div class="order-top"><div><div class="order-id">'+escapeHTML(order.id)+' · '+escapeHTML(order.table)+'</div><div class="order-time">'+escapeHTML(order.time)+' · Thanh toán tại quầy</div></div><span class="badge '+badgeClass+'">'+escapeHTML(statusLabel(status))+'</span></div><div class="order-items">'+lines+(order.note?'<br><b>Ghi chú:</b> '+escapeHTML(order.note):'')+'</div><div class="order-bottom"><strong>'+money(order.total)+'</strong>'+(next?'<button class="mini" onclick="setOrderStatus('+index+',\''+next+'\')">'+(next==='processing'?'Nhận đơn':'Đánh dấu xong')+'</button>':'<span class="footer-small">Đã phục vụ</span>')+'</div></article>';
   }).join(''):'<div class="empty-orders">Chưa có đơn hàng nào.<br>Đơn tạo trong bản mẫu trên trình duyệt này sẽ hiện ở đây.</div>';
 }
 function escapeHTML(value){return String(value).replace(/[&<>"']/g,function(char){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]})}
 async function setOrderStatus(index,status){const orders=readOrders();if(!orders[index])return;
   if(supabaseClient){const {error}=await supabaseClient.from('orders').update({status:status}).eq('id',orders[index].id);if(error){toast('Chưa cập nhật được trạng thái đơn.');return}}
-  orders[index].status=status;saveOrders(orders);renderOrders();toast('Đã cập nhật: '+status)}
+  orders[index].status=status;saveOrders(orders);renderOrders();toast('Đã cập nhật: '+statusLabel(status))}
 function showView(view){
   const isMenu=view==='menu';document.getElementById('menuView').classList.toggle('hidden',!isMenu);document.getElementById('adminView').classList.toggle('hidden',isMenu);
   document.getElementById('navMenu').classList.toggle('active',isMenu);document.getElementById('navAdmin').classList.toggle('active',!isMenu);
@@ -488,7 +572,7 @@ window.addEventListener('storage',function(event){
   try{const incoming=JSON.parse(event.newValue);incoming.forEach(function(order){handleIncomingOrder(order)})}catch(error){}
 });
 if(!supabaseClient)readOrders().forEach(function(order){if(order.id)knownOrderIds.add(order.id)});
-showAdminAccess();updateAlertUI();
+showAdminAccess();updateAlertUI();renderCustomerOrderCount();
 renderMenu();updateCart();renderOrders();initializeSupabase();
 </script>
 </body>
